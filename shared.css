@@ -6,6 +6,61 @@ body {
     cursor: none;
 }
 
+/* Global cursor - Hide native cursor everywhere */
+* {
+  cursor: none !important;
+}
+
+/* Company Branding Background - Hero Watermark */
+.hero-watermark {
+    position: absolute;
+    font-size: 25vw;
+    font-weight: 900;
+    color: rgba(59, 130, 246, 0.04);
+    top: 25%; /* Raised from 45% to 25% */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: 1;
+    pointer-events: none;
+    letter-spacing: -0.05em;
+    user-select: none;
+}
+
+/* Logo styling - larger flat logo */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.brain-logo {
+    width: 72px;
+    height: 72px;
+    color: #2563eb;
+}
+
+/* Book a Call Button in Hamburger Menu - improved styling */
+.book-call-btn {
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #2563eb;
+    border-radius: 9999px;
+    color: #2563eb !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: auto;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.book-call-btn:hover {
+    background-color: #2563eb;
+    color: white !important;
+    transform: scale(1.05);
+}
+
 /* Glowing Button Styles */
 .glowing-button {
   background: linear-gradient(to right, #2563eb, #1d4ed8);
@@ -16,9 +71,151 @@ body {
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
   transition: all 0.3s ease;
 }
+
 .glowing-button:hover {
   transform: scale(1.05);
   box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+}
+
+/* Billing Toggle Styling - enhanced UI */
+.billing-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.billing-option {
+    transition: all 0.3s ease;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+.billing-option.active {
+    color: #2563eb;
+    font-weight: 700;
+    background: rgba(37, 99, 235, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+.billing-toggle-container label div:first-child {
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.2);
+  transition: all 0.4s ease-in-out;
+}
+
+.billing-toggle-container input:checked ~ div {
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+  transform: scale(1.05);
+}
+
+.billing-toggle-container input:checked ~ div {
+  background-color: #2563eb;
+}
+
+.billing-toggle-container label div:first-child {
+  position: relative;
+  transition: all 0.4s ease-in-out;
+}
+
+.billing-toggle-container label .switch-circle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  transition: transform 0.4s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.billing-toggle-container input:checked ~ div .switch-circle {
+  transform: translateX(20px);
+}
+
+/* Pricing card improvements */
+.pricing-card {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  justify-content: space-between;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.pricing-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+  border: 2px solid #3b82f6;
+}
+
+.price-updating {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+/* Price tag formatting */
+.price-tag {
+  margin: 1.5rem 0;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.price-tag small {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6B7280;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.price-tag h3 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #111827;
+  transition: all 0.3s ease;
+}
+
+/* Feature list improvements */
+.pricing-card ul {
+  margin: 1.5rem 0;
+  width: 100%;
+}
+
+.pricing-card ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.pricing-card ul li span:first-child {
+  color: #10B981;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  flex-shrink: 0;
+}
+
+/* Ribbon styling */
+.ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #2563EB;
+  color: white;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-bottom-left-radius: 0.5rem;
+  z-index: 1;
 }
 
 /* Animated Background Gradient */
@@ -108,6 +305,7 @@ body {
 /* Navigation styles */
 #menu {
   transition: all 0.3s ease;
+  display: flex;
 }
 
 #menu.flex {
@@ -196,24 +394,6 @@ body {
 
 .result-card .description {
     color: #4b5563;
-}
-
-/* Pricing card improvements */
-.pricing-card {
-  width: 100%;
-  max-width: 320px;
-  height: auto;
-  justify-content: space-between;
-  padding: 2rem;
-  border-radius: 1rem;
-  background-color: white;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-}
-
-.pricing-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
-  border: 2px solid #3b82f6;
 }
 
 /* Price tag formatting */
@@ -524,6 +704,13 @@ body {
     box-shadow: 0 0 20px rgba(0,0,0,0.05);
 }
 
+.calendly-fixed {
+  height: 850px;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
 /* Step styling */
 .step {
     font-size: 1rem;
@@ -589,7 +776,7 @@ body {
     z-index: 1;
     height: 3px;
     background: #3b82f6;
-    transform-origin: left center;
+    transform-origin: center left;
     opacity: 0.6;
 }
 
@@ -605,6 +792,10 @@ body {
         rgba(255,255,255,0.8) 50%, 
         transparent 100%);
     animation: flowLight 3s infinite linear;
+}
+
+.central-node {
+    z-index: 3;
 }
 
 @keyframes flowLight {
@@ -641,24 +832,27 @@ body {
     100% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
 }
 
-/* Typewriter Animation */
+/* Typewriter Animation - Loop only once with disappearing cursor */
 .typewriter {
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: 3px solid #3b82f6;
-    animation: typing 3.5s steps(30, end), blink 0.75s step-end infinite;
-    width: fit-content;
-    margin: 0 auto;
-    display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #3b82f6;
+  animation: 
+      typing 3.5s steps(30, end) forwards,
+      hideCursor 0.1s 3.5s forwards;
+  width: fit-content;
+  margin: 0 auto;
+  display: inline-block;
+  letter-spacing: 0.02em;
 }
 
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+  from { width: 0 }
+  to { width: 100% }
 }
 
-@keyframes blink {
-    50% { border-color: transparent }
+@keyframes hideCursor {
+  to { border-color: transparent }
 }
 
 /* No default scrollbars */
@@ -806,4 +1000,67 @@ a, button, .transition-all {
 
 .tools-scroller:hover {
     animation-play-state: paused;
+}
+
+/* Count-up animation for pricing numbers */
+.count-up {
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+/* New Feature Card Styling */
+.feature-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
+}
+
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  margin: 0 auto;
+  color: #2563eb;
+}
+
+/* Type Loop Animation */
+#type-loop {
+  display: inline-block;
+  min-height: 1.5em;
+  letter-spacing: 0.02em;
+}
+
+/* Footer Styles */
+footer h3 {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+footer ul li a {
+  color: #4b5563;
+  transition: color 0.3s ease;
+}
+
+footer ul li a:hover {
+  color: #2563eb;
+}
+
+footer p, footer a {
+  font-size: 0.875rem;
+}
+
+/* Global cursor - Hide native cursor */
+* {
+  cursor: none !important;
 }

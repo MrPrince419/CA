@@ -48,87 +48,70 @@
         <a href="results.html" class="my-2 hover:text-blue-600">Results</a>
         <a href="faq.html" class="my-2 hover:text-blue-600">FAQ</a>
         <a href="contact.html" class="my-2 hover:text-blue-600">Contact</a>
-        <a href="contact.html#calendly" class="my-2 hover:text-blue-600">Book a Call</a>
+        <a href="contact.html#calendly" class="my-2 hover:text-blue-600 book-call-btn">Book a Call</a>
+    </div>
+
+    <!-- Fixed Background Layer - ClosR Watermark -->
+    <div class="fixed inset-0 -z-10 opacity-5 pointer-events-none flex justify-center items-start pt-16">
+        <h1 class="text-[12rem] font-bold text-gray-300">ClosR</h1>
     </div>
 
     <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')]"></div>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative min-h-screen pt-32 pb-20 bg-gray-50">
+    <!-- Hero Section - Redesigned -->
+    <section id="hero" class="relative min-h-screen pt-28 pb-20 bg-gray-50">
         <div class="animated-grid">
             <!-- Grid lines will be inserted via JS -->
         </div>
         
-        <!-- ClosR Watermark -->
-        <div class="hero-watermark">ClosR</div>
-        
         <div class="max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
             <div class="max-w-3xl fade-up">
-                <!-- Logo with brain -->
-                <div class="mb-8 flex justify-center">
-                    <div class="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center shadow-lg">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <path d="M12 8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z"></path>
-                            <path d="M15 8a1 1 0 0 1 2 0"></path>
-                            <path d="M9 8a1 1 0 0 0-2 0"></path>
-                            <path d="M16 15c-.2.2-2 1-4 1s-3.8-.8-4-1"></path>
-                        </svg>
-                    </div>
-                </div>
+                <!-- Centered Brain Logo - Larger -->
+                <img src="https://api.iconify.design/mdi/brain.svg" alt="ClosR Logo" class="w-24 h-24 mx-auto mb-4 drop-shadow-xl text-blue-600" />
                 
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900">
-                    <span>Automation that</span><br>
-                    <span class="typewriter text-blue-600">feels invisible.</span>
+                <!-- Type-Loop Animation -->
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-extrabold mb-8 text-gray-900">
+                    <span id="type-loop" class="text-blue-600"></span>
                 </h1>
+                
                 <p class="text-lg text-gray-600 mb-8">ClosR helps you cut costs, save time, and scale your operations without friction.</p>
                 <a href="contact.html" class="glowing-button">Book a Free Call</a>
             </div>
             
-            <!-- Advanced Workflow Map -->
-            <div class="mt-16 hidden md:block fade-up relative workflow-container" style="animation-delay: 0.3s;">
-                <!-- Central ClosR Node -->
-                <div class="workflow-node pulse-glow" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                    <img src="https://api.iconify.design/mdi/brain.svg" alt="ClosR">
-                    <div class="workflow-node-label">ClosR</div>
+            <!-- Animated Feature Grid - 8 cards in 2 rows of 4 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mt-10 max-w-5xl mx-auto fade-up" style="animation-delay: 0.3s;">
+                <div class="feature-card">
+                    <img src="https://api.iconify.design/mdi/cog.svg" class="feature-icon" alt="Workflow" />
+                    <p class="mt-2 font-semibold text-sm">Workflow</p>
                 </div>
-                
-                <!-- ChatGPT Node -->
-                <div class="workflow-node animate-float" style="top: 20%; left: 25%;">
-                    <img src="https://api.iconify.design/simple-icons/openai.svg" alt="ChatGPT">
-                    <div class="workflow-node-label">ChatGPT</div>
+                <div class="feature-card">
+                    <img src="https://api.iconify.design/mdi/chart-line.svg" class="feature-icon" alt="Data" />
+                    <p class="mt-2 font-semibold text-sm">Data</p>
                 </div>
-                
-                <!-- Google Sheets Node -->
-                <div class="workflow-node animate-float-delay" style="top: 30%; left: 75%;">
-                    <img src="https://api.iconify.design/mdi/google-spreadsheet.svg" alt="Google Sheets">
-                    <div class="workflow-node-label">Google Sheets</div>
+                <div class="feature-card">
+                    <img src="https://api.iconify.design/mdi/robot-outline.svg" class="feature-icon" alt="AI" />
+                    <p class="mt-2 font-semibold text-sm">AI</p>
                 </div>
-                
-                <!-- Notion Node -->
-                <div class="workflow-node animate-float-reverse" style="top: 70%; left: 20%;">
-                    <img src="https://api.iconify.design/simple-icons/notion.svg" alt="Notion">
-                    <div class="workflow-node-label">Notion</div>
+                <div class="feature-card">
+                    <img src="https://api.iconify.design/mdi/email-outline.svg" class="feature-icon" alt="Email" />
+                    <p class="mt-2 font-semibold text-sm">Email</p>
                 </div>
-                
-                <!-- Zapier Node -->
-                <div class="workflow-node animate-float" style="top: 65%; left: 70%;">
-                    <img src="https://api.iconify.design/simple-icons/zapier.svg" alt="Zapier">
-                    <div class="workflow-node-label">Zapier</div>
+                <div class="feature-card">
+                    <img src="https://api.iconify.design/mdi/calendar-month-outline.svg" class="feature-icon" alt="Calendar" />
+                    <p class="mt-2 font-semibold text-sm">Calendar</p>
                 </div>
-                
-                <!-- Slack Node -->
-                <div class="workflow-node animate-float-delay" style="top: 80%; left: 50%;">
-                    <img src="https://api.iconify.design/mdi/slack.svg" alt="Slack">
-                    <div class="workflow-node-label">Slack</div>
+                <div class="feature-card">
+                    <img src="https://api.iconify.design/mdi/text-box-outline.svg" class="feature-icon" alt="Docs" />
+                    <p class="mt-2 font-semibold text-sm">Docs</p>
                 </div>
-                
-                <!-- Connection paths -->
-                <div class="workflow-path" style="width: 200px; top: 35%; left: 30%; transform: rotate(30deg);"></div>
-                <div class="workflow-path" style="width: 180px; top: 40%; left: 58%; transform: rotate(140deg);"></div>
-                <div class="workflow-path" style="width: 210px; top: 58%; left: 25%; transform: rotate(-35deg);"></div>
-                <div class="workflow-path" style="width: 170px; top: 57%; left: 54%; transform: rotate(230deg);"></div>
-                <div class="workflow-path" style="width: 140px; top: 65%; left: 46%; transform: rotate(270deg);"></div>
+                <div class="feature-card">
+                    <img src="https://api.iconify.design/mdi/cloud-sync-outline.svg" class="feature-icon" alt="Sync" />
+                    <p class="mt-2 font-semibold text-sm">Sync</p>
+                </div>
+                <div class="feature-card">
+                    <img src="https://api.iconify.design/mdi/shield-check-outline.svg" class="feature-icon" alt="Security" />
+                    <p class="mt-2 font-semibold text-sm">Security</p>
+                </div>
             </div>
         </div>
     </section>
@@ -272,23 +255,24 @@
             </div>
             
             <!-- Add toggle switch for Monthly/Yearly pricing -->
-            <div class="mb-8 flex justify-center items-center gap-4 text-gray-600 fade-up">
-                <span>Monthly</span>
+            <div class="mb-8 flex justify-center items-center gap-4 text-gray-600 fade-up billing-toggle-container">
+                <span class="billing-option monthly active">Monthly</span>
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" id="billingToggle" class="sr-only peer">
-                    <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 transition duration-500"></div>
-                    <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-500 peer-checked:translate-x-full"></div>
+                    <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 transition duration-500">
+                        <div class="switch-circle"></div>
+                    </div>
                 </label>
-                <span>Yearly</span>
+                <span class="billing-option yearly">Yearly</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center pricing-cards">
                 <!-- Starter Plan -->
                 <div class="pricing-card fade-up mx-auto" style="animation-delay: 0.1s;">
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Starter</h3>
                     <div class="price-tag">
                         <small class="text-sm font-medium text-gray-600 uppercase">CAD</small>
-                        <h3 class="text-3xl font-bold text-gray-900" data-monthly="$500/mo" data-yearly="$5,000/yr">$500/mo</h3>
+                        <h3 class="text-3xl font-bold text-gray-900">$<span class="count-up" data-start="0" data-end="500" data-monthly="500" data-yearly="5000">500</span><span data-monthly="/mo" data-yearly="/yr">/mo</span></h3>
                     </div>
                     <ul class="mb-6 space-y-2 text-gray-700">
                         <li class="flex items-start gap-2">
@@ -317,7 +301,7 @@
                     <h3 class="text-xl font-bold mb-2 text-gray-900">Growth</h3>
                     <div class="price-tag">
                         <small class="text-sm font-medium text-gray-600 uppercase">CAD</small>
-                        <h3 class="text-3xl font-bold text-gray-900" data-monthly="$1,000/mo" data-yearly="$10,000/yr">$1,000/mo</h3>
+                        <h3 class="text-3xl font-bold text-gray-900">$<span class="count-up" data-start="0" data-end="1000" data-monthly="1000" data-yearly="10000">1000</span><span data-monthly="/mo" data-yearly="/yr">/mo</span></h3>
                     </div>
                     <ul class="mb-6 space-y-2 text-gray-700">
                         <li class="flex items-start gap-2">
@@ -381,21 +365,43 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white text-gray-600 text-center py-12 border-t border-gray-200">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="mb-6">
-                <a href="index.html" class="text-2xl font-bold text-gray-900">ClosR</a>
-            </div>
-            <div class="mb-6">
-                <a href="mailto:hello@closr.ai" class="text-blue-600 hover:underline">hello@closr.ai</a>
-            </div>
-            <div class="mb-6 flex justify-center space-x-4">
-                <a href="services.html" class="text-gray-500 hover:text-blue-600">Services</a>
-                <a href="results.html" class="text-gray-500 hover:text-blue-600">Results</a>
-                <a href="contact.html" class="text-gray-500 hover:text-blue-600">Contact</a>
-            </div>
-            <div>© 2025 ClosR Automation — No manual in the loop.</div>
+    <footer class="bg-white border-t border-gray-200 py-10 text-gray-600">
+      <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+
+        <!-- Left: Logo & Description -->
+        <div>
+          <div class="flex justify-center md:justify-start items-center gap-2 mb-3">
+            <img src="https://api.iconify.design/mdi/brain.svg" class="w-8 h-8" alt="ClosR" />
+            <h2 class="text-xl font-bold text-gray-900">ClosR</h2>
+          </div>
+          <p class="text-sm text-gray-500">Automation without overwhelm. No manual in the loop.</p>
         </div>
+
+        <!-- Center: Navigation -->
+        <div>
+          <h3 class="text-sm font-semibold mb-3 text-gray-900">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+            <li><a href="services.html" class="hover:text-blue-600">Services</a></li>
+            <li><a href="results.html" class="hover:text-blue-600">Results</a></li>
+            <li><a href="faq.html" class="hover:text-blue-600">FAQ</a></li>
+            <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Right: CTA & Email -->
+        <div>
+          <h3 class="text-sm font-semibold mb-3 text-gray-900">Get in Touch</h3>
+          <p class="text-sm text-gray-500 mb-2">
+            <a href="mailto:hello@closr.ai" class="hover:text-blue-600">hello@closr.ai</a>
+          </p>
+          <a href="contact.html#calendly" class="glowing-button text-sm">Book a Call</a>
+        </div>
+
+      </div>
+      <div class="text-center text-xs text-gray-400 mt-10">
+        &copy; 2025 ClosR. All rights reserved.
+      </div>
     </footer>
 
     <!-- Back to Top Button -->
@@ -419,6 +425,8 @@
             initStatsSection();
             initPricingToggle();
             initCustomCursor();
+            animatePricingNumbers();
+            initTypeLoop();
         });
 
         // Centralized function to handle fade-in animations
@@ -488,17 +496,85 @@
         // Function to initialize pricing toggle
         function initPricingToggle() {
             const toggle = document.getElementById('billingToggle');
-            const prices = document.querySelectorAll('[data-monthly]');
+            const monthlyOption = document.querySelector('.billing-option.monthly');
+            const yearlyOption = document.querySelector('.billing-option.yearly');
+            const pricingCards = document.querySelectorAll('.pricing-card');
+            const countUpElements = document.querySelectorAll('.count-up');
+            const suffixElements = document.querySelectorAll('[data-monthly][data-yearly]');
             
             if (toggle) {
                 toggle.addEventListener('change', () => {
-                    prices.forEach(price => {
-                        price.textContent = toggle.checked 
-                            ? price.dataset.yearly 
-                            : price.dataset.monthly;
+                    // Update active state on billing options
+                    if (toggle.checked) {
+                        monthlyOption.classList.remove('active');
+                        yearlyOption.classList.add('active');
+                    } else {
+                        yearlyOption.classList.remove('active');
+                        monthlyOption.classList.add('active');
+                    }
+                    
+                    // Animate pricing cards
+                    pricingCards.forEach(card => {
+                        card.classList.add('price-updating');
+                        setTimeout(() => {
+                            card.classList.remove('price-updating');
+                        }, 600);
+                    });
+                    
+                    // Update counts with animation
+                    countUpElements.forEach(counter => {
+                        const newValue = toggle.checked 
+                            ? counter.dataset.yearly 
+                            : counter.dataset.monthly;
+                        
+                        if (newValue) {
+                            counter.dataset.end = newValue;
+                            animateCounter(counter);
+                        }
+                    });
+                    
+                    // Update suffixes
+                    suffixElements.forEach(element => {
+                        element.textContent = toggle.checked 
+                            ? element.dataset.yearly 
+                            : element.dataset.monthly;
                     });
                 });
             }
+        }
+
+        // Function to animate pricing numbers like stats section
+        function animatePricingNumbers() {
+            const counters = document.querySelectorAll('.count-up');
+            counters.forEach(counter => {
+                animateCounter(counter);
+            });
+        }
+        
+        function animateCounter(counter) {
+            const end = +counter.dataset.end;
+            const start = +counter.dataset.start;
+            let current = start;
+            
+            // Clear any existing animation
+            if (counter._animationFrame) {
+                cancelAnimationFrame(counter._animationFrame);
+            }
+            
+            const update = () => {
+                const increment = Math.ceil((end - current) / 8);
+                current += increment;
+                
+                if (current < end) {
+                    counter.textContent = current;
+                    counter._animationFrame = requestAnimationFrame(update);
+                } else {
+                    counter.textContent = end;
+                    counter._animationFrame = null;
+                }
+            };
+            
+            update();
         }
 
         // Function to create animated grid in hero section
@@ -595,6 +671,60 @@
                     cursor.classList.remove('hover');
                 });
             });
+        }
+        
+        // Function to align workflow paths radially from the center
+        function alignWorkflowPaths() {
+            const centralNode = document.querySelector('.central-node');
+            if (!centralNode) return;
+            
+            const centralRect = centralNode.getBoundingClientRect();
+            const centralX = centralRect.left + centralRect.width / 2;
+            const centralY = centralRect.top + centralRect.height / 2;
+            
+            const nodes = {
+                'chatgpt': document.querySelector('.workflow-node[style*="top: 30%; left: 25%"]'),
+                'sheets': document.querySelector('.workflow-node[style*="top: 30%; left: 75%"]'),
+                'notion': document.querySelector('.workflow-node[style*="top: 70%; left: 25%"]'),
+                'zapier': document.querySelector('.workflow-node[style*="top: 70%; left: 75%"]'),
+                'slack': document.querySelector('.workflow-node[style*="top: 80%; left: 50%"]')
+            };
+            
+            const paths = document.querySelectorAll('.workflow-path[data-target]');
+            paths.forEach((path, index) => {
+                const targetNode = nodes[path.dataset.target];
+                if (!targetNode) return;
+                
+                const targetRect = targetNode.getBoundingClientRect();
+                const targetX = targetRect.left + targetRect.width / 2;
+                const targetY = targetRect.top + targetRect.height / 2;
+                
+                // Calculate distance and angle
+                const dx = targetX - centralX;
+                const dy = targetY - centralY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+                
+                // Position the path
+                path.style.width = `${distance}px`;
+                path.style.top = `${centralY - centralRect.top}px`;
+                path.style.left = `${centralX - centralRect.left}px`;
+                path.style.transformOrigin = 'center left';
+                path.style.transform = `rotate(${angle}deg)`;
+            });
+        }
+
+        // Type-Loop Animation
+        function initTypeLoop() {
+            const phrases = [
+                "Automation that feels invisible"
+            ];
+            let index = 0;
+            const el = document.getElementById("type-loop");
+            
+            if (!el) return;
+            
+            el.innerHTML = `<span class="typewriter">${phrases[index]}</span>`;
         }
     </script>
 </body>
