@@ -1,0 +1,19 @@
+# Editor and environment clutter
+.vscode/
+.idea/
+.DS_Store
+.env
+*.log
+node_modules/
+tmp/
+dist/
+
+# Local development files
+*.local
+.cache/
+.history/
+
+# Backup files
+*.bak
+*.swp
+*~

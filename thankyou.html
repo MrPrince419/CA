@@ -3,17 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're Booked | ClosR Automation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Thank You | ClosR Automation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="shared.css" rel="stylesheet">
+    <meta name="description" content="Thank you for contacting ClosR Automation" />
+    <meta name="author" content="ClosR Automation" />
+    <link rel="icon" href="https://api.iconify.design/mdi/brain.svg" type="image/svg+xml">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
+            background-color: #ffffff;
+            color: #1f2937;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .glowing-button {
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
             color: white;
-            overflow-x: hidden;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .glowing-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Confetti animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 16px;
+            background-color: var(--confetti-color);
+            opacity: 0.7;
+            animation: confetti-fall var(--fall-duration, 3s) linear forwards, confetti-shake var(--shake-duration, 2s) ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        @keyframes confetti-shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(5px); }
+            50% { transform: translateX(-5px); }
+            75% { transform: translateX(3px); }
+            100% { transform: translateX(0); }
         }
 
         /* Grid bg animation */
@@ -22,6 +84,7 @@
             background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
                             linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
             animation: gridMove 20s linear infinite;
+            background-color: #f9fafb;
         }
 
         @keyframes gridMove {
@@ -33,284 +96,280 @@
             }
         }
 
-        /* Glowing Button Styles */
-        .glowing-button {
+        /* Nav Link Animation */
+        .nav-link {
             position: relative;
-            padding: 16px 32px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            background: linear-gradient(to right, #4CAF50, #2196F3);
-            overflow: hidden;
-            z-index: 1;
-            transition: transform 0.2s, box-shadow 0.3s;
+            color: #1f2937;
         }
 
-        .glowing-button::before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
             width: 0;
-            padding-bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 100%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, padding-bottom 0.5s;
-            z-index: -1;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
         }
 
-        .glowing-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px #4CAF50, 0 0 25px #2196F3;
+        .nav-link:hover::after {
+            width: 100%;
         }
 
-        .glowing-button:hover::before {
-            width: 300%;
-            padding-bottom: 300%;
+        /* Mobile Menu Animation */
+        #mobileMenu {
+            transition: all 0.3s ease;
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+
+        #mobileMenu.show {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         /* Success checkmark animation */
-        .checkmark-circle {
-            width: 120px;
-            height: 120px;
-            position: relative;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(76, 175, 80, 0.2);
-            animation: pulse-glow 2s infinite;
-        }
-
-        @keyframes pulse-glow {
+        @keyframes checkmark {
             0% {
-                box-shadow: 0 0 30px rgba(76, 175, 80, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 50px rgba(76, 175, 80, 0.4);
-            }
-            100% {
-                box-shadow: 0 0 30px rgba(76, 175, 80, 0.2);
-            }
-        }
-
-        .checkmark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 56px;
-            height: 56px;
-            margin-left: -28px;
-            margin-top: -36px;
-            transform: rotate(45deg);
-        }
-
-        .checkmark-stem {
-            position: absolute;
-            width: 3px;
-            height: 0;
-            background-color: #4CAF50;
-            left: 28px;
-            top: 16px;
-            animation: stem-animation 0.5s ease-out forwards 0.3s;
-        }
-
-        .checkmark-kick {
-            position: absolute;
-            width: 0;
-            height: 3px;
-            background-color: #4CAF50;
-            left: 14px;
-            top: 40px;
-            animation: kick-animation 0.5s ease-out forwards 0.8s;
-        }
-
-        @keyframes stem-animation {
-            0% {
-                height: 0;
-            }
-            100% {
-                height: 28px;
-            }
-        }
-
-        @keyframes kick-animation {
-            0% {
-                width: 0;
-            }
-            100% {
-                width: 14px;
-            }
-        }
-
-        /* Fade-in Animation */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
+                transform: scale(0);
                 opacity: 0;
             }
-            to {
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
                 opacity: 1;
             }
         }
 
-        @keyframes fadeUp {
-            from {
+        .checkmark-animation {
+            animation: checkmark 0.8s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+
+        /* Loading Animation */
+        .banter-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            margin: auto;
+        }
+
+        .banter-loader__box {
+            float: left;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            margin-right: 4px;
+            background-color: #2563eb;
+            opacity: 0.7;
+        }
+
+        .banter-loader__box:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .banter-loader__box:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .banter-loader__box:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .banter-loader__box:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .banter-loader__box:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .banter-loader__box:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .banter-loader__box:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .banter-loader__box:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .hidden-loader {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Card animation */
+        @keyframes card-appear {
+            0% {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
-            to {
+            100% {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Animation delays */
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-400 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-600 {
-            animation-delay: 0.6s;
-        }
-
-        .delay-800 {
-            animation-delay: 0.8s;
-        }
-
-        /* Countdown animation */
-        .countdown {
-            display: inline-block;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-
-        .countdown:hover {
-            opacity: 1;
-        }
-
-        /* Fade-out Animation */
-        .fade-out {
-            opacity: 1;
-            animation: fadeOut 1s ease-out forwards;
-        }
-
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
-        }
-
-        /* Page transition container */
-        .page-container {
-            min-height: 100vh;
-            width: 100%;
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .page-container.exiting {
-            opacity: 0;
-            transform: scale(0.95);
+        .card-animation {
+            animation: card-appear 0.8s ease-out forwards;
         }
     </style>
 </head>
-<body class="grid-bg">
-    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"></div>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    
+    <!-- Hamburger Menu Toggle -->
+    <button id="menu-toggle" class="fixed top-6 right-6 z-50 bg-blue-600 text-white p-2 rounded">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-    <div class="page-container">
-        <main class="min-h-[80vh] flex items-center justify-center px-4">
-            <div class="max-w-xl mx-auto text-center">
-                <div class="flex justify-center mb-8 fade-in">
-                    <div class="checkmark-circle">
-                        <div class="checkmark">
-                            <div class="checkmark-stem"></div>
-                            <div class="checkmark-kick"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white fade-up delay-200">You're Booked.</h1>
-                
-                <p class="text-xl text-gray-300 mb-12 fade-up delay-400">We'll review your goals and bring ideas to the call.</p>
-                
-                <div class="fade-up delay-600">
-                    <a href="index.html" class="glowing-button">Back to Home</a>
-                </div>
-                
-                <p class="text-sm text-gray-500 mt-12 fade-in delay-800 countdown">
-                    Redirecting in <span id="countdown">10</span> seconds...
-                </p>
+    <!-- Full-screen Menu -->
+    <div id="menu" class="fixed inset-0 bg-white bg-opacity-98 text-gray-900 hidden flex-col items-center justify-center gap-8 z-40 text-2xl">
+        <div class="text-4xl font-bold mb-8 text-blue-600">ClosR</div>
+        <a href="index.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Home</a>
+        <a href="services.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Services</a>
+        <a href="results.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Results</a>
+        <a href="faq.html" class="hover:text-blue-600 transition-colors duration-500 py-2">FAQ</a>
+        <a href="contact.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Contact</a>
+        <a href="contact.html#calendly" class="mt-4 glowing-button">Book a Call</a>
+    </div>
+    
+    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')]"></div>
+
+    <!-- Thank You Content -->
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="text-center max-w-2xl fade-up">
+            <div class="mb-8 inline-block">
+                <svg class="w-24 h-24 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
             </div>
-        </main>
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">Thank You!</h1>
+            <p class="text-xl text-gray-600 mb-8">Your message has been received. We'll get back to you within 24 hours.</p>
+            
+            <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">What Happens Next?</h2>
+                <ol class="text-left space-y-4 text-gray-700">
+                    <li class="flex items-start">
+                        <span class="text-blue-600 font-bold mr-2">1.</span>
+                        <p>Our team will review your message and prepare relevant information for your business.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-600 font-bold mr-2">2.</span>
+                        <p>You'll receive a confirmation email with details and any next steps.</p>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-600 font-bold mr-2">3.</span>
+                        <p>We'll schedule a call to discuss how automation can help your specific business needs.</p>
+                    </li>
+                </ol>
+            </div>
+            
+            <div class="space-y-4">
+                <a href="index.html" class="glowing-button inline-block">Return to Homepage</a>
+                <div class="mt-6">
+                    <p class="text-gray-600">Have a question? <a href="faq.html" class="text-blue-600 hover:underline">Check our FAQ</a> or <a href="contact.html" class="text-blue-600 hover:underline">contact support</a>.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-white text-gray-600 text-center py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div>
+                <a href="index.html" class="text-2xl font-bold text-gray-900">ClosR</a>
+            </div>
+            <div class="mt-2">© 2025 ClosR Automation — No manual in the loop.</div>
+        </div>
+    </footer>
+
     <script>
-        // Initialize custom cursor
-        window.addEventListener('mousemove', initCursor, { once: true });
+        document.addEventListener('DOMContentLoaded', function() {
+            initMenu();
+            initCustomCursor();
+            initLazyLoad();
+        });
         
-        function initCursor(e) {
-            const cursor = document.getElementById('custom-cursor');
-            cursor.style.opacity = '1';
+        // Centralized function to handle fade-in animations
+        function initLazyLoad() {
+            const lazyElements = document.querySelectorAll('.fade-up');
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
             
-            function updateCursorPosition(e) {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
             
-            document.addEventListener('mousemove', updateCursorPosition, { passive: true });
-            updateCursorPosition(e);
+            lazyElements.forEach(el => observer.observe(el));
+        }
+        
+        // Initialize menu
+        function initMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
             
-            const hoverables = document.querySelectorAll('a, button, .glowing-button');
-            hoverables.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
+            if (!menuToggle || !menu) return;
+            
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on menu items
+            const menuItems = menu.querySelectorAll('a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    menuToggle.classList.remove('active');
+                });
             });
         }
         
-        // Countdown timer with smooth fade-out transition
-        const countdownElement = document.getElementById('countdown');
-        const pageContainer = document.querySelector('.page-container');
-        let seconds = 10;
-        
-        const countdownInterval = setInterval(() => {
-            seconds--;
-            if (seconds <= 0) {
-                clearInterval(countdownInterval);
+        // Custom cursor functionality
+        function initCustomCursor() {
+            const cursor = document.getElementById('custom-cursor');
+            if (!cursor) return;
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            });
+            
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                });
                 
-                // Add the exiting class to start the fade-out animation
-                pageContainer.classList.add('exiting');
-                
-                // Wait for the animation to complete before redirecting
-                setTimeout(() => {
-                    window.location.href = 'index.html';
-                }, 800);
-            } else {
-                countdownElement.textContent = seconds;
-            }
-        }, 1000);
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                });
+            });
+        }
     </script>
 </body>
 </html>

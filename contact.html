@@ -3,87 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let's Build It Together | ClosR Automation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Contact Us | ClosR Automation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <meta name="description" content="ClosR Automation – Schedule a call to discuss your workflow automation needs." />
+    <meta name="description" content="Contact ClosR Automation for business automation solutions that save time and reduce costs." />
     <meta name="author" content="ClosR Automation" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="Let's Build It Together | ClosR Automation" />
-    <meta property="og:description" content="We'll audit your workflows, recommend systems, and build fast." />
+    <meta property="og:title" content="Contact ClosR Automation" />
+    <meta property="og:description" content="Get in touch for smart automation solutions for your business." />
     <meta property="og:type" content="website" />
+    <link rel="icon" href="https://api.iconify.design/mdi/brain.svg" type="image/svg+xml">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: white;
+            cursor: none;
         }
 
-        /* Glassmorphism Card Styles */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 40px rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.3);
-        }
-
-        /* Glowing Button Styles */
+        /* Consolidated button styles */
         .glowing-button {
-            position: relative;
-            padding: 16px 32px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            background: linear-gradient(to right, #4CAF50, #2196F3);
-            overflow: hidden;
-            z-index: 1;
-            transition: transform 0.2s, box-shadow 0.3s;
+          background: linear-gradient(to right, #2563eb, #1d4ed8);
+          color: white;
+          padding: 0.75rem 1.5rem;
+          font-weight: 600;
+          border-radius: 9999px;
+          box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+          transition: all 0.3s ease;
         }
-
-        .glowing-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            padding-bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 100%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, padding-bottom 0.5s;
-            z-index: -1;
-        }
-
         .glowing-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px #4CAF50, 0 0 25px #2196F3;
-        }
-
-        .glowing-button:hover::before {
-            width: 300%;
-            padding-bottom: 300%;
+          transform: scale(1.05);
+          box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
         }
 
         /* Fade-up Animation */
         .fade-up {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
+            transform: translateY(40px);
+            transition: all 0.8s ease-in-out;
         }
 
         .fade-up.active {
@@ -91,396 +48,553 @@
             transform: translateY(0);
         }
 
-        /* Grid bg animation */
-        .grid-bg {
-            background-size: 50px 50px;
-            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 50px 50px;
-            }
-        }
-
-        /* Calendly wrapper styles */
-        .calendly-wrapper {
-            position: relative;
-            border-radius: 16px;
+        /* Full-screen Menu Animation */
+        #menu {
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
-            transition: all 0.5s ease;
+            transition: all 0.4s ease-in-out;
         }
-
-        .calendly-wrapper:hover {
-            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
+        
+        #menu.flex {
+            animation: fadeIn 0.3s ease-in-out;
         }
-
-        .calendly-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 16px;
-            padding: 2px;
-            background: linear-gradient(to right, #4CAF50, #2196F3);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        /* Progress Strip */
-        .progress-step {
-            position: relative;
-        }
-
-        .progress-step::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: -50%;
-            width: 100%;
-            height: 2px;
-            background-color: rgba(59, 130, 246, 0.2);
-            transform: translateY(-50%);
-        }
-
-        .progress-step:last-child::after {
+        
+        #menu.hidden {
             display: none;
         }
-
-        .progress-step.active .step-number {
-            background-color: #3b82f6;
-            color: white;
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        .step-number {
-            width: 30px;
-            height: 30px;
+        /* Menu toggle animation */
+        #menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: currentColor;
+            margin: 5px 0;
+            transition: all 0.3s ease-in-out;
+            border-radius: 2px;
+        }
+
+        #menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        #menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Custom cursor styles */
+        #custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: #3B82F6;
             border-radius: 50%;
-            background-color: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease-in-out, height 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            mix-blend-mode: difference;
+        }
+
+        #custom-cursor.hover {
+            width: 40px;
+            height: 40px;
+            background-color: #2563EB;
+        }
+
+        /* Process steps */
+        .process-step {
+            position: relative;
+            padding-left: 4rem;
+            counter-increment: step-counter;
+        }
+
+        .process-step::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3rem;
+            height: 3rem;
+            background-color: #3B82F6;
+            color: white;
+            border-radius: 9999px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 0.5rem;
-            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 1.25rem;
+            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25);
         }
 
-        .progress-step:hover .step-number {
-            transform: scale(1.1);
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 1.5rem;
+            top: 3.5rem;
+            width: 2px;
+            height: calc(100% - 3rem);
             background-color: rgba(59, 130, 246, 0.2);
+            transform: translateX(-50%);
         }
 
-        /* Shimmer Animation */
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-            100% {
-                background-position: 1000px 0;
-            }
+        /* Form styles */
+        .form-group {
+            position: relative;
+            margin-bottom: 1.5rem;
         }
 
-        .shimmer {
-            animation: shimmer 2s infinite linear;
-            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
-            background-size: 1000px 100%;
+        .form-control {
+            width: 100%;
+            padding: 1rem 1rem 1rem 2.5rem; /* Extra padding for icon */
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #374151;
+            background-color: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
         }
 
-        /* Back to Top Button Animation */
-        #backToTop {
-            transition: all 0.3s ease;
+        .form-control:focus {
+            border-color: #3b82f6;
+            outline: 0;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+
+        .form-label {
+            position: absolute;
+            top: 0.75rem;
+            left: 2.5rem; /* Adjusted for icon */
+            color: #6b7280;
+            pointer-events: none;
+            transition: all 0.2s ease-out;
+        }
+
+        .form-control:focus ~ .form-label,
+        .form-control:not(:placeholder-shown) ~ .form-label {
+            top: -0.5rem;
+            left: 0.75rem;
+            font-size: 0.75rem;
+            color: #3b82f6;
+            background: white;
+            padding: 0 0.25rem;
+        }
+
+        .form-icon {
+            position: absolute;
+            top: 0.85rem;
+            left: 0.85rem;
+            color: #6b7280;
+            width: 1.25rem;
+            height: 1.25rem;
+            pointer-events: none;
+        }
+
+        /* No default scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.5);
+        }
+        
+        /* Global animation enhancements */
+        a, button, .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Background watermark */
+        .hero-watermark {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12rem;
+            font-weight: bold;
+            color: rgba(59, 130, 246, 0.05);
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        /* Single instance of banter-loader */
+        .banter-loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 72px;
+            height: 72px;
+            margin: auto;
+        }
+
+        .banter-loader__box {
+            float: left;
+            position: relative;
+            width: 20px;
+            height: 20px;
+            margin-right: 4px;
+            background-color: #2563eb;
+            opacity: 0.7;
+        }
+
+        .banter-loader__box:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .banter-loader__box:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .banter-loader__box:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .banter-loader__box:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .banter-loader__box:nth-child(6) {
+            animation-delay: 0.5s;
+        }
+
+        .banter-loader__box:nth-child(7) {
+            animation-delay: 0.6s;
+        }
+
+        .banter-loader__box:nth-child(8) {
+            animation-delay: 0.7s;
+        }
+
+        .banter-loader__box:nth-child(9) {
+            animation-delay: 0.8s;
+        }
+
+        .hidden-loader {
             opacity: 0;
-            transform: translateY(20px);
+            pointer-events: none;
         }
 
-        #backToTop.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Menu Animation */
-        #mobileMenu {
+        /* Form styles enhancement */
+        .form-wrapper {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
-            transform: translateY(-10px);
-            opacity: 0;
         }
 
-        #mobileMenu.show {
-            transform: translateY(0);
-            opacity: 1;
+        .form-wrapper:hover {
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        /* Enhanced form input styles */
+        .form-control {
+            width: 100%;
+            padding: 1rem 1rem 1rem 2.5rem; /* Extra padding for icon */
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #374151;
+            background-color: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .form-control:focus {
+            border-color: #3b82f6;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+        }
+
+        /* Process steps for Book → Audit → Launch */
+        .step {
+            font-size: 1rem;
+            background: #f0f4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            box-shadow: 0 0 8px rgba(59,130,246,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px rgba(59,130,246,0.2);
+        }
+        
+        /* Calendly container styling */
+        .calendly-container {
+            width: 100%;
+            height: 850px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
         }
     </style>
 </head>
-<body>
-    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"></div>
-    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
-    
-    <!-- Sticky Navigation Bar -->
-    <nav class="fixed top-0 w-full z-50 backdrop-blur bg-black/70 shadow">
-        <div class="container max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold text-white hover:text-blue-400 transition duration-300">
-                <a href="index.html">ClosR</a>
-            </div>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="index.html" class="nav-link text-white hover:text-blue-400 transition duration-300">Home</a>
-                <a href="services.html" class="nav-link text-white hover:text-blue-400 transition duration-300">Services</a>
-                <a href="results.html" class="nav-link text-white hover:text-blue-400 transition duration-300">Results</a>
-                <a href="contact.html" class="nav-link text-blue-400 transition duration-300">Contact</a>
-            </div>
-            <div class="block md:hidden">
-                <button id="mobileMenuBtn" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-black/90 backdrop-blur w-full">
-            <div class="container px-6 py-4 flex flex-col space-y-4">
-                <a href="index.html" class="text-white hover:text-blue-400 transition duration-300">Home</a>
-                <a href="services.html" class="text-white hover:text-blue-400 transition duration-300">Services</a>
-                <a href="results.html" class="text-white hover:text-blue-400 transition duration-300">Results</a>
-                <a href="contact.html" class="text-blue-400 transition duration-300">Contact</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section with Grid Background -->
-    <section class="grid-bg min-h-[40vh] flex items-center justify-center pt-24 pb-12 relative">
-        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-800/10 z-0"></div>
-        <div class="container max-w-3xl mx-auto px-6 text-center relative z-10">
-            <div class="fade-up">
-                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white leading-tight">Let's Build It Together</h1>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">We'll audit your workflows, recommend systems, and build fast.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Calendly Embed Section -->
-    <section class="py-16">
-        <div class="container max-w-4xl mx-auto px-6">
-            <div class="relative">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-800/20 rounded-xl blur-3xl z-0"></div>
-                <div class="calendly-wrapper glass-card fade-up relative z-10">
-                    <div class="bg-black/40 p-2 md:p-4 min-h-[500px] md:min-h-[600px]">
-                        <div id="calendlyPreloader" class="absolute inset-0 flex items-center justify-center bg-gray-900/80 rounded-xl z-10 shimmer overflow-hidden">
-                            <div class="text-center">
-                                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                                <p class="text-gray-400">Loading calendar...</p>
-                            </div>
-                        </div>
-                        <div id="calendlyEmbed" class="w-full h-full min-h-[500px] md:min-h-[600px]"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What Happens Next Section -->
-    <section class="py-16 bg-gray-900">
-        <div class="container max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center fade-up">What Happens Next</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="fade-up" style="animation-delay: 0.1s;">
-                    <div class="glass-card h-full p-6 text-center flex flex-col items-center">
-                        <div class="text-4xl mb-4">🆓</div>
-                        <h3 class="text-xl font-bold mb-3">Free Call</h3>
-                        <p class="text-gray-300 text-sm">We discuss your workflow and identify time-wasters.</p>
-                    </div>
-                </div>
-                
-                <div class="fade-up" style="animation-delay: 0.2s;">
-                    <div class="glass-card h-full p-6 text-center flex flex-col items-center">
-                        <div class="text-4xl mb-4">📋</div>
-                        <h3 class="text-xl font-bold mb-3">Audit</h3>
-                        <p class="text-gray-300 text-sm">$150 audit credited toward build. Done in 1–2 days.</p>
-                    </div>
-                </div>
-                
-                <div class="fade-up" style="animation-delay: 0.3s;">
-                    <div class="glass-card h-full p-6 text-center flex flex-col items-center">
-                        <div class="text-4xl mb-4">⚡</div>
-                        <h3 class="text-xl font-bold mb-3">Launch</h3>
-                        <p class="text-gray-300 text-sm">You get your first automation live in under 2–3 weeks.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Progress Strip -->
-    <section class="py-12">
-        <div class="container max-w-4xl mx-auto px-6">
-            <div class="grid grid-cols-3 gap-2 text-center fade-up">
-                <div class="progress-step active">
-                    <div class="step-number">1</div>
-                    <p class="text-sm text-gray-300">Book Call</p>
-                </div>
-                <div class="progress-step">
-                    <div class="step-number">2</div>
-                    <p class="text-sm text-gray-300">Get Audit</p>
-                </div>
-                <div class="progress-step">
-                    <div class="step-number">3</div>
-                    <p class="text-sm text-gray-300">Launch</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Email Fallback -->
-    <div class="text-center my-12 fade-up">
-        <p class="text-gray-400 text-sm">Prefer email?</p>
-        <a href="mailto:hello@closr.ai" class="text-blue-400 hover:underline text-sm mt-2 inline-block">hello@closr.ai</a>
+<body class="bg-white text-gray-900">
+    <!-- Loading Animation -->
+    <div class="banter-loader">
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
     </div>
 
-    <!-- Footer -->
-    <footer class="text-sm text-gray-400 text-center py-6 border-t border-gray-800">
-        © 2025 ClosR Automation — No manual in the loop. <br />
-        <a href="mailto:hello@closr.ai" class="text-blue-400 hover:underline">hello@closr.ai</a>
-    </footer>
-
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg z-40 hover:bg-blue-700 hidden">
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    
+    <!-- Hamburger Toggle Button -->
+    <button id="menu-toggle" class="fixed top-6 right-6 z-50 bg-blue-600 text-white p-2 rounded">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
         </svg>
     </button>
 
+    <!-- Full-screen Menu -->
+    <div id="menu" class="fixed inset-0 bg-white bg-opacity-98 text-gray-900 hidden flex-col items-center justify-center gap-8 z-40 text-2xl overflow-hidden">
+        <div class="text-4xl font-bold mb-8 text-blue-600">ClosR</div>
+        <a href="index.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Home</a>
+        <a href="services.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Services</a>
+        <a href="results.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Results</a>
+        <a href="faq.html" class="hover:text-blue-600 transition-colors duration-500 py-2">FAQ</a>
+        <a href="contact.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Contact</a>
+        <a href="contact.html#calendly" class="mt-4 glowing-button">Book a Call</a>
+    </div>
+    
+    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')]"></div>
+
+    <!-- Page Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 py-32 text-white text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+            <p class="text-xl max-w-2xl mx-auto">Ready to transform your business with automation? We're here to help.</p>
+        </div>
+    </header>
+
+    <!-- Process Section (Book → Audit → Launch) -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto max-w-6xl px-6">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Our Process</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">From discovery to implementation, we follow a proven process to deliver automation that works.</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10 text-center fade-up">
+                <div class="step text-blue-600 font-semibold">1️⃣ Book a Call</div>
+                <span class="text-gray-400 hidden sm:block">→</span>
+                <div class="step text-blue-600 font-semibold">2️⃣ Business Audit</div>
+                <span class="text-gray-400 hidden sm:block">→</span>
+                <div class="step text-blue-600 font-semibold">3️⃣ Launch Automation</div>
+            </div>
+
+            <div class="max-w-4xl mx-auto fade-up">
+                <div class="space-y-16 counter-reset: step-counter">
+                    <!-- Step 1: Book -->
+                    <div class="process-step">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Book</h3>
+                        <p class="text-gray-700">Begin with a discovery call where we'll learn about your business, challenges, and goals. We'll identify which workflows are causing the most friction and explore how automation can help.</p>
+                    </div>
+                    
+                    <!-- Step 2: Audit -->
+                    <div class="process-step">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Audit</h3>
+                        <p class="text-gray-700">Our team will analyze your existing processes, identify bottlenecks and opportunities for automation. We'll develop a detailed roadmap showing where automation will have the most impact on your business.</p>
+                    </div>
+                    
+                    <!-- Step 3: Launch -->
+                    <div class="process-step">
+                        <h3 class="text-xl font-bold mb-2 text-gray-900">Launch</h3>
+                        <p class="text-gray-700">We implement your custom solution, provide training for your team, and establish monitoring systems. Our ongoing support ensures your automation continues delivering value as your business evolves.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Options Section -->
+    <section class="py-20">
+        <div class="container mx-auto max-w-6xl px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="fade-up">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-900">Send Us a Message</h2>
+                    
+                    <div class="form-wrapper">
+                        <form action="https://formspree.io/f/movepala" method="POST" class="space-y-4">
+                            <div class="form-group">
+                                <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                                <input type="text" id="name" name="name" class="form-control" placeholder=" " required>
+                                <label for="name" class="form-label">Your Name</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <input type="email" id="email" name="email" class="form-control" placeholder=" " required>
+                                <label for="email" class="form-label">Email Address</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
+                                <input type="text" id="company" name="company" class="form-control" placeholder=" ">
+                                <label for="company" class="form-label">Company (Optional)</label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                </svg>
+                                <textarea id="message" name="message" rows="5" class="form-control" placeholder=" " required></textarea>
+                                <label for="message" class="form-label">Your Message</label>
+                            </div>
+                            
+                            <button type="submit" class="glowing-button w-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Calendly Integration -->
+                <div class="fade-up" style="animation-delay: 0.2s;" id="calendly">
+                    <h2 class="text-2xl font-bold mb-6 text-gray-900">Schedule a Call</h2>
+                    
+                    <div class="calendly-container">
+                        <!-- Fixed Calendly inline widget -->
+                        <div class="calendly-inline-widget w-full" data-url="https://calendly.com/princeaiautomation/1hour?hide_gdpr_banner=1" style="min-width:320px;height:850px;"></div>
+                        <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-600 text-center py-12 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-6">
+                <a href="index.html" class="text-2xl font-bold text-gray-900">ClosR</a>
+            </div>
+            <div class="mb-6">
+                <a href="mailto:hello@closr.ai" class="text-blue-600 hover:underline">hello@closr.ai</a>
+            </div>
+            <div class="mb-6 flex justify-center space-x-4">
+                <a href="contact.html" class="text-gray-500 hover:text-blue-600">
+                    Contact
+                </a>
+            </div>
+            <div>© 2025 ClosR Automation — No manual in the loop.</div>
+        </div>
+    </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Setup mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            if(mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                    // Add show class after removing hidden to trigger animation
-                    if(!mobileMenu.classList.contains('hidden')) {
-                        setTimeout(() => {
-                            mobileMenu.classList.add('show');
-                        }, 10); // Small delay to ensure transition happens
-                    } else {
-                        mobileMenu.classList.remove('show');
-                    }
-                });
+            // Hide loader when page is loaded
+            const loader = document.querySelector('.banter-loader');
+            if (loader) {
+                loader.classList.add('hidden-loader');
             }
             
-            // Setup fade-up animations
-            const observerOptions = {
+            initMenu();
+            initLazyLoad();
+            initCustomCursor();
+        });
+        
+        // Centralized function to handle fade-in animations
+        function initLazyLoad() {
+            const lazyElements = document.querySelectorAll('.fade-up');
+            const options = {
                 root: null,
                 rootMargin: '0px',
                 threshold: 0.1
             };
             
-            const fadeObserver = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('active');
-                        fadeObserver.unobserve(entry.target);
+                        observer.unobserve(entry.target);
                     }
                 });
-            }, observerOptions);
+            }, options);
             
-            document.querySelectorAll('.fade-up').forEach(el => {
-                fadeObserver.observe(el);
+            lazyElements.forEach(el => observer.observe(el));
+        }
+        
+        // Initialize menu
+        function initMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
+            
+            if (!menuToggle || !menu) return;
+            
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menuToggle.classList.toggle('active');
             });
             
-            // Initialize Calendly with lazy loading
-            const calendlyObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const embed = document.getElementById('calendlyEmbed');
-                        const preloader = document.getElementById('calendlyPreloader');
-                        
-                        // Initialize Calendly script
-                        const script = document.createElement('script');
-                        script.src = 'https://assets.calendly.com/assets/external/widget.js';
-                        script.async = true;
-                        document.head.appendChild(script);
-                        
-                        script.onload = function() {
-                            // Initialize Calendly
-                            Calendly.initInlineWidget({
-                                url: 'https://calendly.com/closr/30min',
-                                parentElement: embed,
-                                prefill: {},
-                                utm: {}
-                            });
-                            
-                            // Hide preloader after slight delay to ensure widget loads
-                            setTimeout(() => {
-                                preloader.style.opacity = '0';
-                                setTimeout(() => {
-                                    preloader.style.display = 'none';
-                                }, 500);
-                            }, 1500);
-                        };
-                        
-                        calendlyObserver.unobserve(entry.target);
-                    }
+            // Close menu when clicking on menu items
+            const menuItems = menu.querySelectorAll('a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    menuToggle.classList.remove('active');
                 });
-            }, { threshold: 0.1 });
-            
-            calendlyObserver.observe(document.querySelector('.calendly-wrapper'));
-            
-            // Back to top button
-            const backToTopBtn = document.getElementById('backToTop');
-            
-            function handleScroll() {
-                if (window.scrollY > 300) {
-                    backToTopBtn.classList.add('show');
-                    backToTopBtn.classList.remove('hidden');
-                } else {
-                    backToTopBtn.classList.remove('show');
-                    setTimeout(() => {
-                        if (!backToTopBtn.classList.contains('show')) {
-                            backToTopBtn.classList.add('hidden');
-                        }
-                    }, 300);
-                }
-            }
-            
-            window.addEventListener('scroll', handleScroll);
-            
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
-            
-            // Initial check for scroll position
-            handleScroll();
-        });
+        }
         
-        // Initialize cursor only when user moves mouse
-        window.addEventListener('mousemove', initCursor, { once: true });
-        
-        // Function to init cursor
-        function initCursor(e) {
+        // Custom cursor functionality
+        function initCustomCursor() {
             const cursor = document.getElementById('custom-cursor');
-            cursor.style.opacity = '1';
+            if (!cursor) return;
             
-            function updateCursorPosition(e) {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            }
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            });
             
-            document.addEventListener('mousemove', updateCursorPosition, { passive: true });
-            updateCursorPosition(e);
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, .form-control');
             
-            const hoverables = document.querySelectorAll('a, button, .glowing-button, .glass-card, .progress-step');
-            hoverables.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                });
             });
         }
     </script>

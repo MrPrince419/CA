@@ -3,325 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 – You're off the grid | ClosR Automation</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Not Found | ClosR Automation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <meta name="description" content="ClosR Automation – Business automation & AI services to save time, reduce cost, and scale smartly." />
+    <link href="shared.css" rel="stylesheet">
+    <meta name="description" content="Page not found - ClosR Automation" />
     <meta name="author" content="ClosR Automation" />
-    <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="ClosR Automation" />
-    <meta property="og:description" content="Smart, scalable automation for modern businesses." />
-    <meta property="og:type" content="website" />
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* Grid bg animation */
-        .grid-bg {
-            background-size: 50px 50px;
-            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% {
-                background-position: 0 0;
-            }
-            100% {
-                background-position: 50px 50px;
-            }
-        }
-
-        /* Glowing Button Styles */
-        .glowing-button {
-            position: relative;
-            padding: 16px 32px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            background: linear-gradient(to right, #4CAF50, #2196F3);
-            overflow: hidden;
-            z-index: 1;
-            transition: transform 0.2s, box-shadow 0.3s;
-        }
-
-        .glowing-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            padding-bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 100%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, padding-bottom 0.5s;
-            z-index: -1;
-        }
-
-        .glowing-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px #4CAF50, 0 0 25px #2196F3;
-        }
-
-        .glowing-button:hover::before {
-            width: 300%;
-            padding-bottom: 300%;
-        }
-
-        /* 404 Text Animation */
-        .error-digits {
-            font-size: 8rem;
-            font-weight: 700;
-            background: linear-gradient(to right, #3b82f6, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1;
-            position: relative;
-            display: inline-block;
-        }
-
-        .glitch-effect {
-            position: relative;
-        }
-
-        .glitch-effect::before,
-        .glitch-effect::after {
-            content: "404";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, #3b82f6, #ec4899);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .glitch-effect::before {
-            left: 2px;
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
-            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-            opacity: 0.8;
-        }
-
-        .glitch-effect::after {
-            left: -2px;
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
-            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-            opacity: 0.8;
-        }
-
-        @keyframes glitch-anim-1 {
-            0% {
-                transform: translateX(0);
-            }
-            80% {
-                transform: translateX(0);
-            }
-            85% {
-                transform: translateX(2px);
-            }
-            90% {
-                transform: translateX(-2px);
-            }
-            95% {
-                transform: translateX(1px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes glitch-anim-2 {
-            0% {
-                transform: translateX(0);
-            }
-            80% {
-                transform: translateX(0);
-            }
-            85% {
-                transform: translateX(-2px);
-            }
-            90% {
-                transform: translateX(2px);
-            }
-            95% {
-                transform: translateX(-1px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
-
-        /* Terminal-like animation */
-        .command-line {
-            width: 100%;
-            max-width: 400px;
-            margin: 0 auto;
-            padding: 1.5rem;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: monospace;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .command-line-text {
-            position: relative;
-            display: inline-block;
-        }
-
-        .command-line-text::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: -10px;
-            width: 10px;
-            height: 100%;
-            background-color: #4CAF50;
-            animation: blink 1s step-end infinite;
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Fade-in Animation */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 1s ease-out forwards;
-        }
-
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeUp 1s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Animation delays */
-        .delay-200 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-400 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-600 {
-            animation-delay: 0.6s;
-        }
-
-        .delay-800 {
-            animation-delay: 0.8s;
-        }
-    </style>
+    <link rel="icon" href="https://api.iconify.design/mdi/brain.svg" type="image/svg+xml">
 </head>
-<body class="grid-bg">
-    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"></div>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    
+    <!-- Hamburger Menu Toggle -->
+    <button id="menu-toggle" class="fixed top-6 right-6 z-50 bg-blue-600 text-white p-2 rounded">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
 
-    <main class="min-h-screen flex items-center justify-center px-4">
-        <div class="max-w-2xl mx-auto text-center">
-            <div class="mb-8 fade-in">
-                <div class="error-digits glitch-effect">404</div>
+    <!-- Full-screen Menu -->
+    <div id="menu" class="fixed inset-0 bg-white bg-opacity-98 text-gray-900 hidden flex-col items-center justify-center gap-8 z-40 text-2xl">
+        <div class="text-4xl font-bold mb-8 text-blue-600">ClosR</div>
+        <a href="index.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Home</a>
+        <a href="services.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Services</a>
+        <a href="results.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Results</a>
+        <a href="faq.html" class="hover:text-blue-600 transition-colors duration-500 py-2">FAQ</a>
+        <a href="contact.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Contact</a>
+        <a href="contact.html#calendly" class="mt-4 glowing-button">Book a Call</a>
+    </div>
+    
+    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')]"></div>
+
+    <!-- 404 Content -->
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="text-center max-w-xl">
+            <div class="mb-8 inline-block">
+                <svg class="w-32 h-32 text-blue-600 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
             </div>
-            
-            <h1 class="text-3xl md:text-4xl font-bold mb-6 text-white fade-up delay-200">You're off the grid.</h1>
-            
-            <p class="text-xl text-gray-300 mb-8 fade-up delay-400">This page doesn't exist. Or maybe it's been automated out of existence.</p>
-            
-            <div class="command-line mb-12 fade-up delay-600 text-left">
-                <div class="text-green-500">closr@automation:~$</div>
-                <div class="text-white mt-1">
-                    <span>find </span>
-                    <span class="text-yellow-400">/pages</span>
-                    <span> -name </span>
-                    <span class="text-green-400">"</span>
-                    <span class="command-line-text text-green-400">requested-page</span>
-                    <span class="text-green-400">"</span>
+            <h1 class="text-5xl font-bold text-gray-900 mb-4">404</h1>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-6">Page Not Found</h2>
+            <p class="text-gray-600 mb-8">The page you're looking for doesn't exist or has been moved.</p>
+            <div class="space-y-4">
+                <a href="index.html" class="glowing-button inline-block">Go Home</a>
+                <div class="mt-4">
+                    <a href="contact.html" class="text-blue-600 hover:underline">Contact Support</a>
                 </div>
-                <div class="text-red-400 mt-1">Error: No such file or directory</div>
-            </div>
-            
-            <div class="fade-up delay-800">
-                <a href="index.html" class="glowing-button">Back to Home</a>
             </div>
         </div>
-    </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-600 text-center py-8 border-t border-gray-200 absolute bottom-0 w-full">
+        <div class="max-w-6xl mx-auto px-6">
+            <div>
+                <a href="index.html" class="text-2xl font-bold text-gray-900">ClosR</a>
+            </div>
+            <div class="mt-2">© 2025 ClosR Automation — No manual in the loop.</div>
+        </div>
+    </footer>
 
     <script>
-        // Initialize custom cursor
-        window.addEventListener('mousemove', initCursor, { once: true });
+        document.addEventListener('DOMContentLoaded', function() {
+            initMenu();
+            initCustomCursor();
+        });
         
-        function initCursor(e) {
-            const cursor = document.getElementById('custom-cursor');
-            cursor.style.opacity = '1';
+        // Initialize menu
+        function initMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
             
-            function updateCursorPosition(e) {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            }
+            if (!menuToggle || !menu) return;
             
-            document.addEventListener('mousemove', updateCursorPosition, { passive: true });
-            updateCursorPosition(e);
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menuToggle.classList.toggle('active');
+            });
             
-            const hoverables = document.querySelectorAll('a, button, .glowing-button, .error-digits');
-            hoverables.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
+            // Close menu when clicking on menu items
+            const menuItems = menu.querySelectorAll('a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    menuToggle.classList.remove('active');
+                });
             });
         }
         
-        // Simulate typing effect in command line
-        document.addEventListener('DOMContentLoaded', function() {
-            const commandText = document.querySelector('.command-line-text');
-            const fullText = "requested-page";
-            commandText.textContent = "";
+        // Custom cursor functionality
+        function initCustomCursor() {
+            const cursor = document.getElementById('custom-cursor');
+            if (!cursor) return;
             
-            let i = 0;
-            function typeWriter() {
-                if (i < fullText.length) {
-                    commandText.textContent += fullText.charAt(i);
-                    i++;
-                    setTimeout(typeWriter, 100);
-                }
-            }
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            });
             
-            setTimeout(typeWriter, 1200);
-        });
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                });
+            });
+        }
     </script>
 </body>
 </html>

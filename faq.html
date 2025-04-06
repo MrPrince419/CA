@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>FAQ | ClosR Automation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Frequently asked questions about ClosR Automation's business automation solutions." />
+    <meta name="author" content="ClosR Automation" />
+    <meta property="og:title" content="FAQ | ClosR Automation" />
+    <meta property="og:description" content="Find answers to common questions about our automation services." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" href="https://api.iconify.design/mdi/brain.svg" type="image/svg+xml">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            cursor: none;
+        }
+
+        /* Glowing Button Styles */
+        .glowing-button {
+          background: linear-gradient(to right, #2563eb, #1d4ed8);
+          color: white;
+          padding: 0.75rem 1.5rem;
+          font-weight: 600;
+          border-radius: 9999px;
+          box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+          transition: all 0.3s ease;
+        }
+        .glowing-button:hover {
+          transform: scale(1.05);
+          box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+        }
+
+        /* Fade-up Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-in-out;
+        }
+
+        .fade-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Item Styles */
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item summary {
+            list-style: none;
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: #1f2937;
+            cursor: pointer;
+            position: relative;
+            padding-right: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq-item summary::after {
+            content: "+";
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-size: 1.5rem;
+            color: #3b82f6;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item[open] summary {
+            color: #3b82f6;
+        }
+        
+        .faq-item[open] summary::after {
+            content: "−";
+            transform: rotate(180deg);
+        }
+        
+        .faq-item p {
+            color: #4b5563;
+            margin-top: 1rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid #e5e7eb;
+        }
+        
+        .faq-item:hover {
+            background-color: #f9fafb;
+        }
+
+        /* Menu toggle and full-screen menu */
+        #menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: currentColor;
+            margin: 5px 0;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        #menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        #menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        #menu {
+            overflow: hidden;
+            transition: all 0.4s ease-in-out;
+        }
+        
+        #menu.flex {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        #menu.hidden {
+            display: none;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Custom cursor styles */
+        #custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: #3B82F6;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+            mix-blend-mode: difference;
+        }
+
+        #custom-cursor.hover {
+            width: 40px;
+            height: 40px;
+            background-color: #2563EB;
+        }
+
+        /* No default scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.5);
+        }
+        
+        /* Global animation enhancements */
+        a, button, .transition-all {
+            transition: all 0.3s ease;
+        }
+        
+        /* FAQ category tabs */
+        .faq-tabs {
+            display: flex;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 2rem;
+            overflow-x: auto;
+        }
+        
+        .faq-tab {
+            padding: 0.75rem 1.5rem;
+            color: #4b5563;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            white-space: nowrap;
+        }
+        
+        .faq-tab:hover {
+            color: #3b82f6;
+        }
+        
+        .faq-tab.active {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        
+        .faq-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
+    
+    <!-- Hamburger Menu Toggle -->
+    <button id="menu-toggle" class="fixed top-6 right-6 z-50 bg-blue-600 text-white p-2 rounded">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Full-screen Menu -->
+    <div id="menu" class="fixed inset-0 bg-white bg-opacity-98 text-gray-900 hidden flex-col items-center justify-center gap-8 z-40 text-2xl">
+        <div class="text-4xl font-bold mb-8 text-blue-600">ClosR</div>
+        <a href="index.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Home</a>
+        <a href="services.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Services</a>
+        <a href="results.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Results</a>
+        <a href="faq.html" class="hover:text-blue-600 transition-colors duration-500 py-2">FAQ</a>
+        <a href="contact.html" class="hover:text-blue-600 transition-colors duration-500 py-2">Contact</a>
+        <a href="contact.html#calendly" class="mt-4 glowing-button">Book a Call</a>
+    </div>
+    
+    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')]"></div>
+
+    <!-- Page Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-800 py-32 text-white text-center">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Frequently Asked Questions</h1>
+            <p class="text-xl max-w-2xl mx-auto">Find answers to common questions about our automation services.</p>
+        </div>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="py-20">
+        <div class="container mx-auto max-w-4xl px-6">
+            <div class="text-center mb-12 fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Common Questions</h2>
+                <p class="text-lg text-gray-600">Everything you need to know about our services and how we can help your business.</p>
+            </div>
+            
+            <!-- FAQ Categories -->
+            <div class="faq-tabs fade-up mb-8">
+                <div class="faq-tab active" data-tab="all">All Questions</div>
+                <div class="faq-tab" data-tab="getting-started">Getting Started</div>
+                <div class="faq-tab" data-tab="services">Services</div>
+                <div class="faq-tab" data-tab="pricing">Pricing & Billing</div>
+            </div>
+            
+            <!-- FAQ Accordion -->
+            <div class="fade-up">
+                <details class="faq-item" data-category="getting-started">
+                    <summary class="font-semibold text-lg cursor-pointer">What exactly is business automation?</summary>
+                    <p class="text-gray-600 mt-2">Business automation is the use of technology to execute recurring tasks or processes where manual effort can be replaced. It helps reduce costs, increase efficiency, minimize errors, and free up human resources for higher-value work.</p>
+                </details>
+                
+                <details class="faq-item" data-category="getting-started">
+                    <summary class="font-semibold text-lg cursor-pointer">How do I know if my business needs automation?</summary>
+                    <p class="text-gray-600 mt-2">If your team is spending significant time on repetitive tasks, experiencing data entry errors, struggling with information silos, or facing bottlenecks in workflows, these are clear signs that automation could benefit your business.</p>
+                </details>
+                
+                <details class="faq-item" data-category="services">
+                    <summary class="font-semibold text-lg cursor-pointer">What's included in the automation audit?</summary>
+                    <p class="text-gray-600 mt-2">Our automation audit includes a comprehensive review of your existing workflows, identification of bottlenecks and automation opportunities, ROI analysis, and a detailed roadmap with recommendations tailored to your business needs.</p>
+                </details>
+                
+                <details class="faq-item" data-category="pricing">
+                    <summary class="font-semibold text-lg cursor-pointer">Can I cancel my service anytime?</summary>
+                    <p class="text-gray-600 mt-2">Yes, our services are provided on a month-to-month basis with no long-term contracts required. You can cancel at any time with 30 days' notice. For custom projects, different terms may apply based on your specific agreement.</p>
+                </details>
+                
+                <details class="faq-item" data-category="services">
+                    <summary class="font-semibold text-lg cursor-pointer">How do you pick the tools for my business?</summary>
+                    <p class="text-gray-600 mt-2">We select tools based on your specific business needs, existing technology stack, budget, and long-term goals. We're tool-agnostic and focus on solutions that provide the best fit for your workflows rather than pushing specific platforms.</p>
+                </details>
+                
+                <details class="faq-item" data-category="getting-started">
+                    <summary class="font-semibold text-lg cursor-pointer">What kind of ROI can I expect?</summary>
+                    <p class="text-gray-600 mt-2">While results vary by business, our clients typically see ROI in the form of time savings (15-30 hours per employee monthly), error reduction (up to 90%), faster customer response times (40-70% improvement), and overall cost savings of 20-40% in automated areas.</p>
+                </details>
+                
+                <details class="faq-item" data-category="services">
+                    <summary class="font-semibold text-lg cursor-pointer">What industries do you work with?</summary>
+                    <p class="text-gray-600 mt-2">We work with a wide range of industries including healthcare, legal services, professional services, coaching businesses, e-commerce, marketing agencies, and local businesses. Our approach can be adapted to most business types and sizes.</p>
+                </details>
+                
+                <details class="faq-item" data-category="getting-started">
+                    <summary class="font-semibold text-lg cursor-pointer">Do I need a technical background?</summary>
+                    <p class="text-gray-600 mt-2">Not at all. Our service is designed for business owners and teams without technical expertise. We handle all the technical aspects, provide user-friendly solutions, and offer training to ensure you can easily manage your automated systems.</p>
+                </details>
+                
+                <details class="faq-item" data-category="pricing">
+                    <summary class="font-semibold text-lg cursor-pointer">How long does implementation typically take?</summary>
+                    <p class="text-gray-600 mt-2">Implementation timelines vary based on complexity. Simple automation workflows can be deployed in 1-2 weeks, while more complex enterprise solutions may take 4-8 weeks. We provide clear timelines during our initial consultation.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 py-16 text-white">
+        <div class="max-w-6xl mx-auto px-6 text-center fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Still have questions?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Book a free consultation call and our team will answer all your questions about automation for your specific business needs.</p>
+            <a href="contact.html" class="bg-white text-blue-700 hover:bg-gray-100 hover:text-blue-800 px-8 py-4 rounded-lg font-semibold shadow-lg transition duration-300 hover:shadow-xl hover:transform hover:scale-105">Contact Us Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-600 text-center py-12 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-6">
+                <a href="index.html" class="text-2xl font-bold text-gray-900">ClosR</a>
+            </div>
+            <div class="mb-6">
+                <a href="mailto:hello@closr.ai" class="text-blue-600 hover:underline">hello@closr.ai</a>
+            </div>
+            <div class="mb-6 flex justify-center space-x-4">
+                <a href="services.html" class="text-gray-500 hover:text-blue-600">Services</a>
+                <a href="results.html" class="text-gray-500 hover:text-blue-600">Results</a>
+                <a href="contact.html" class="text-gray-500 hover:text-blue-600">Contact</a>
+            </div>
+            <div>© 2025 ClosR Automation — No manual in the loop.</div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initMenu();
+            initLazyLoad();
+            initCustomCursor();
+            initFaqTabs();
+        });
+        
+        // Centralized function to handle fade-in animations
+        function initLazyLoad() {
+            const lazyElements = document.querySelectorAll('.fade-up');
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            
+            lazyElements.forEach(el => observer.observe(el));
+        }
+        
+        // Initialize FAQ tabs
+        function initFaqTabs() {
+            const tabs = document.querySelectorAll('.faq-tab');
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    const category = tab.getAttribute('data-tab');
+                    
+                    // Show/hide FAQ items based on category
+                    faqItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Initialize menu
+        function initMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
+            
+            if (!menuToggle || !menu) return;
+            
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on menu items
+            const menuItems = menu.querySelectorAll('a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    menuToggle.classList.remove('active');
+                });
+            });
+        }
+        
+        // Custom cursor functionality
+        function initCustomCursor() {
+            const cursor = document.getElementById('custom-cursor');
+            if (!cursor) return;
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            });
+            
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, summary');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -9,605 +9,253 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="shared.css" rel="stylesheet">
     <meta name="description" content="ClosR Automation – Business automation & AI services to save time, reduce cost, and scale smartly." />
     <meta name="author" content="ClosR Automation" />
     <meta name="robots" content="index, follow" />
     <meta property="og:title" content="ClosR Automation" />
     <meta property="og:description" content="Smart, scalable automation for modern businesses." />
     <meta property="og:type" content="website" />
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-
-        /* Glowing Button Styles */
-        .glowing-button {
-            position: relative;
-            padding: 16px 32px;
-            text-align: center;
-            text-decoration: none;
-            font-size: 20px;
-            cursor: pointer;
-            border: none;
-            border-radius: 8px;
-            color: #fff;
-            background: linear-gradient(to right, #4CAF50, #2196F3);
-            overflow: hidden;
-            z-index: 1;
-            transition: transform 0.2s, box-shadow 0.3s;
-        }
-
-        .glowing-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            padding-bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 100%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s, padding-bottom 0.5s;
-            z-index: -1;
-        }
-
-        .glowing-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px #4CAF50, 0 0 25px #2196F3;
-        }
-
-        .glowing-button:hover::before {
-            width: 300%;
-            padding-bottom: 300%;
-        }
-
-        /* Bounce Animation */
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-20px);
-            }
-            60% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .bounce {
-            animation: bounce 2s infinite;
-        }
-
-        /* Fade-in Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .fade-in {
-            animation: fadeIn 1s ease-in-out forwards;
-        }
-
-        /* Animated Background Gradient */
-        @keyframes animatedGradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        .animated-gradient {
-            background: linear-gradient(270deg, #00bcd4, #9c27b0, #e91e63);
-            background-size: 600% 600%;
-            animation: animatedGradient 15s ease infinite;
-        }
-
-        /* Glassmorphism Card Styles */
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.05);
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: -1;
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.2;
-            }
-            50% {
-                transform: scale(1.1);
-                opacity: 0.5;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 0.2;
-            }
-        }
-
-        .feature-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #fff;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .feature-card p {
-            font-size: 1rem;
-            color: #ddd;
-        }
-
-        /* Fade-in Animation for Cards */
-        .fade-in-card {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInCard 0.5s ease-out forwards;
-        }
-
-        @keyframes fadeInCard {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Marquee Styles */
-        .marquee-container {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        .marquee {
-            display: flex;
-            width: max-content;
-            animation: marqueeAnimation 20s linear infinite;
-            padding-left: 100%; /* Start offscreen */
-        }
-
-        .marquee-card {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 150px;
-            height: 150px;
-            margin: 0 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s;
-            color: #fff;
-        }
-
-        .marquee-card:hover {
-            transform: scale(1.1);
-        }
-
-        .marquee-card img {
-            max-width: 48px;
-            height: auto;
-        }
-
-        @keyframes marqueeAnimation {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Stats Card Styles */
-        .stats-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .stats-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 0.5rem;
-        }
-
-        .stats-subtitle {
-            font-size: 1.2rem;
-            color: #ddd;
-            margin-bottom: 0.5rem;
-        }
-
-        .stats-description {
-            font-size: 1rem;
-            color: #aaa;
-        }
-
-        /* Fade-up Animation */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease-out;
-        }
-
-        .fade-up.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Pricing Card Styles */
-        .pricing-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .pricing-card .title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 1rem;
-        }
-
-        .pricing-card .price {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #fff;
-            margin-bottom: 1rem;
-        }
-
-        .pricing-card ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-card li {
-            font-size: 1rem;
-            color: #ddd;
-            margin-bottom: 0.5rem;
-        }
-
-        .pricing-card li::before {
-            content: "✅ ";
-            color: #4CAF50;
-            margin-right: 0.5rem;
-        }
-
-        .pricing-card .cta-button {
-            background: linear-gradient(to right, #4CAF50, #2196F3);
-            color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 8px;
-            display: inline-block;
-            transition: transform 0.2s;
-        }
-
-        .pricing-card .cta-button:hover {
-            transform: scale(1.1);
-        }
-
-        .pricing-card.featured {
-            box-shadow: 0 0 20px rgba(80, 192, 203, 0.5);
-            transform: translateY(-10px);
-        }
-
-        /* Nav Link Animation */
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
-        }
-
-        /* Logo Animation */
-        .logo-bubble {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .logo-bubble:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-        }
-
-        /* Mobile Menu Animation */
-        #mobileMenu {
-            transition: all 0.3s ease;
-            transform: translateY(-10px);
-            opacity: 0;
-        }
-
-        #mobileMenu.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        /* Back to Top Button Animation */
-        #backToTop {
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        #backToTop.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="icon" href="https://api.iconify.design/mdi/brain.svg" type="image/svg+xml">
 </head>
-<body class="bg-black text-white">
-    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"></div>
-    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
-    <div class="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-br from-blue-900 to-purple-800 opacity-20 z-0" style="transform: translateY(-30%);"></div>
+<body class="bg-white text-gray-900">
+    <!-- Loading Animation -->
+    <div class="banter-loader">
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+        <div class="banter-loader__box"></div>
+    </div>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor"></div>
     
-    <!-- New Sticky Navigation Bar -->
-    <nav class="fixed top-0 w-full z-50 backdrop-blur bg-black/70 shadow">
-        <div class="container max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold text-white hover:text-blue-400 transition duration-300">
-                <a href="#hero">ClosR</a>
-            </div>
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#hero" class="nav-link text-white hover:text-blue-400 transition duration-300">Home</a>
-                <a href="#features" class="nav-link text-white hover:text-blue-400 transition duration-300">Services</a>
-                <a href="#stats" class="nav-link text-white hover:text-blue-400 transition duration-300">Results</a>
-                <a href="contact.html#calendly" class="nav-link text-white hover:text-blue-400 transition duration-300">Contact</a>
-            </div>
-            <div class="block md:hidden">
-                <button id="mobileMenuBtn" class="text-white focus:outline-none">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="hidden md:hidden bg-black/90 backdrop-blur w-full">
-            <div class="container px-6 py-4 flex flex-col space-y-4">
-                <a href="#hero" class="text-white hover:text-blue-400 transition duration-300">Home</a>
-                <a href="#features" class="text-white hover:text-blue-400 transition duration-300">Services</a>
-                <a href="#stats" class="text-white hover:text-blue-400 transition duration-300">Results</a>
-                <a href="contact.html#calendly" class="text-white hover:text-blue-400 transition duration-300">Contact</a>
-            </div>
-        </div>
-    </nav>
+    <!-- Hamburger Menu Toggle -->
+    <button id="menu-toggle" class="fixed top-6 right-6 z-50 bg-blue-600 text-white p-2 rounded">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+    </button>
 
-    <section id="hero" class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center pt-32">
-        <div class="fade-up lazy">
-            <h1 id="headline" class="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg hover:text-blue-400 transition duration-300"></h1>
-            <p id="subheadline" class="text-lg md:text-xl lg:text-2xl mb-8">Automation, AI, and smart workflows – built for impact.</p>
+    <!-- Full-screen Menu -->
+    <div id="menu" class="hidden fixed inset-0 bg-white text-gray-900 flex-col items-center justify-center text-xl z-40">
+        <a href="index.html" class="my-2 hover:text-blue-600">Home</a>
+        <a href="services.html" class="my-2 hover:text-blue-600">Services</a>
+        <a href="results.html" class="my-2 hover:text-blue-600">Results</a>
+        <a href="faq.html" class="my-2 hover:text-blue-600">FAQ</a>
+        <a href="contact.html" class="my-2 hover:text-blue-600">Contact</a>
+        <a href="contact.html#calendly" class="my-2 hover:text-blue-600">Book a Call</a>
+    </div>
+
+    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/light-paper-fibers.png')]"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen pt-32 pb-20 bg-gray-50">
+        <div class="animated-grid">
+            <!-- Grid lines will be inserted via JS -->
         </div>
-        <a id="ctaButton" href="contact.html#calendly" class="glowing-button animate-pulse mt-6 hover:scale-105 drop-shadow-lg">Book a Free Consultation</a>
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bounce">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-            </svg>
+        
+        <!-- ClosR Watermark -->
+        <div class="hero-watermark">ClosR</div>
+        
+        <div class="max-w-6xl mx-auto px-6 flex flex-col items-center text-center">
+            <div class="max-w-3xl fade-up">
+                <!-- Logo with brain -->
+                <div class="mb-8 flex justify-center">
+                    <div class="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 8c2.2 0 4 1.8 4 4s-1.8 4-4 4-4-1.8-4-4 1.8-4 4-4z"></path>
+                            <path d="M15 8a1 1 0 0 1 2 0"></path>
+                            <path d="M9 8a1 1 0 0 0-2 0"></path>
+                            <path d="M16 15c-.2.2-2 1-4 1s-3.8-.8-4-1"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-gray-900">
+                    <span>Automation that</span><br>
+                    <span class="typewriter text-blue-600">feels invisible.</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8">ClosR helps you cut costs, save time, and scale your operations without friction.</p>
+                <a href="contact.html" class="glowing-button">Book a Free Call</a>
+            </div>
+            
+            <!-- Advanced Workflow Map -->
+            <div class="mt-16 hidden md:block fade-up relative workflow-container" style="animation-delay: 0.3s;">
+                <!-- Central ClosR Node -->
+                <div class="workflow-node pulse-glow" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <img src="https://api.iconify.design/mdi/brain.svg" alt="ClosR">
+                    <div class="workflow-node-label">ClosR</div>
+                </div>
+                
+                <!-- ChatGPT Node -->
+                <div class="workflow-node animate-float" style="top: 20%; left: 25%;">
+                    <img src="https://api.iconify.design/simple-icons/openai.svg" alt="ChatGPT">
+                    <div class="workflow-node-label">ChatGPT</div>
+                </div>
+                
+                <!-- Google Sheets Node -->
+                <div class="workflow-node animate-float-delay" style="top: 30%; left: 75%;">
+                    <img src="https://api.iconify.design/mdi/google-spreadsheet.svg" alt="Google Sheets">
+                    <div class="workflow-node-label">Google Sheets</div>
+                </div>
+                
+                <!-- Notion Node -->
+                <div class="workflow-node animate-float-reverse" style="top: 70%; left: 20%;">
+                    <img src="https://api.iconify.design/simple-icons/notion.svg" alt="Notion">
+                    <div class="workflow-node-label">Notion</div>
+                </div>
+                
+                <!-- Zapier Node -->
+                <div class="workflow-node animate-float" style="top: 65%; left: 70%;">
+                    <img src="https://api.iconify.design/simple-icons/zapier.svg" alt="Zapier">
+                    <div class="workflow-node-label">Zapier</div>
+                </div>
+                
+                <!-- Slack Node -->
+                <div class="workflow-node animate-float-delay" style="top: 80%; left: 50%;">
+                    <img src="https://api.iconify.design/mdi/slack.svg" alt="Slack">
+                    <div class="workflow-node-label">Slack</div>
+                </div>
+                
+                <!-- Connection paths -->
+                <div class="workflow-path" style="width: 200px; top: 35%; left: 30%; transform: rotate(30deg);"></div>
+                <div class="workflow-path" style="width: 180px; top: 40%; left: 58%; transform: rotate(140deg);"></div>
+                <div class="workflow-path" style="width: 210px; top: 58%; left: 25%; transform: rotate(-35deg);"></div>
+                <div class="workflow-path" style="width: 170px; top: 57%; left: 54%; transform: rotate(230deg);"></div>
+                <div class="workflow-path" style="width: 140px; top: 65%; left: 46%; transform: rotate(270deg);"></div>
+            </div>
         </div>
     </section>
 
-    <svg class="w-full h-12 text-[#0a0a0a]" viewBox="0 0 1440 100" fill="currentColor" preserveAspectRatio="none">
-        <path d="M0,0 C600,100 800,0 1440,100 L1440,0 L0,0 Z"></path>
-    </svg>
-
-    <section id="features" class="bg-gray-900 py-32">
-        <div class="container mx-auto max-w-6xl">
+    <!-- Feature/Services Section -->
+    <section id="features" class="bg-white py-20">
+        <div class="container mx-auto max-w-6xl px-6">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Smart Services for Modern Business</h2>
+                <p class="text-lg text-gray-600">Automation solutions that work while you sleep</p>
+            </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <div id="feature1" class="feature-card transition duration-300 transform hover:scale-105 hover:border-blue-400 border border-blue-500/10 rounded-xl backdrop-blur" style="animation-delay: 0.1s;">
-                    <i class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">⚙️</i>
-                    <h3>Automate <span class="relative group text-blue-400">
+                <div id="feature1" class="feature-card fade-up" style="animation-delay: 0.1s;">
+                    <div class="flex justify-center items-center mb-4">
+                        <div class="text-4xl transition duration-300 hover:scale-110 hover:text-blue-600">⚙️</div>
+                    </div>
+                    <h3>Automate <span class="relative group text-blue-600">
                         automation
-                        <span class="absolute left-0 -top-6 text-xs bg-black px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 text-green-400 font-mono">
+                        <span class="absolute left-0 -top-6 text-xs bg-blue-50 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 text-blue-700 font-mono">
                           // it's all scripted
-                        </span>
                       </span></h3>
                     <p>No more manual tasks, ever.</p>
                 </div>
-
-                <div id="feature2" class="feature-card transition duration-300 transform hover:scale-105 hover:border-blue-400 border border-blue-500/10 rounded-xl backdrop-blur" style="animation-delay: 0.3s;">
-                    <i class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">📊</i>
+                <div id="feature2" class="feature-card fade-up" style="animation-delay: 0.2s;">
+                    <div class="flex justify-center items-center mb-4">
+                        <div class="text-4xl transition duration-300 hover:scale-110 hover:text-blue-600">📊</div>
+                    </div>
                     <h3>Smart Reports</h3>
                     <p>Real-time insights delivered to you.</p>
                 </div>
-
-                <div id="feature3" class="feature-card transition duration-300 transform hover:scale-105 hover:border-blue-400 border border-blue-500/10 rounded-xl backdrop-blur" style="animation-delay: 0.5s;">
-                    <i class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">📞</i>
+                <div id="feature3" class="feature-card fade-up" style="animation-delay: 0.3s;">
+                    <div class="flex justify-center items-center mb-4">
+                        <div class="text-4xl transition duration-300 hover:scale-110 hover:text-blue-600">📞</div>
+                    </div>
                     <h3>24H Response</h3>
                     <p>Always available support.</p>
                 </div>
-
-                <div id="feature4" class="feature-card transition duration-300 transform hover:scale-105 hover:border-blue-400 border border-blue-500/10 rounded-xl backdrop-blur" style="animation-delay: 0.7s;">
-                    <i class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">🔒</i>
+                <div id="feature4" class="feature-card fade-up" style="animation-delay: 0.4s;">
+                    <div class="flex justify-center items-center mb-4">
+                        <div class="text-4xl transition duration-300 hover:scale-110 hover:text-blue-600">🔒</div>
+                    </div>
                     <h3>Private & Secure</h3>
                     <p>No bloated client data stored.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Replace marquee section with scrollable logos -->
-    <section id="tools" class="bg-gray-800 py-24">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-12 fade-up">
-                <h2 class="text-4xl font-bold">Built With the Tools You Already Trust</h2>
-                <p class="text-lg text-gray-400">ClosR workflows run on the world's most respected platforms</p>
+    <!-- Tools/Integrations Section -->
+    <section id="tools" class="py-20 bg-gray-50 text-gray-900">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="mb-16 fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Tools We Work With</h2>
+                <p class="text-gray-600">ClosR connects seamlessly with your favorite apps.</p>
             </div>
-            <div class="overflow-x-auto flex gap-6 px-4 py-6 whitespace-nowrap items-center fade-up">
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" class="w-8 h-8 object-contain"/>
+            
+            <div class="space-y-16 fade-up">
+                <!-- Row 1 - Left to Right -->
+                <div class="tools-scroller-wrapper">
+                    <div class="tools-scroller">
+                        <img src="assets/logos/zapier.svg" alt="Zapier" class="tool-logo" title="Zapier" />
+                        <img src="assets/logos/mailchimp-freddie-icon.svg" alt="Mailchimp" class="tool-logo" title="Mailchimp" />
+                        <img src="assets/logos/slack-new-logo.svg" alt="Slack" class="tool-logo" title="Slack" />
+                        <img src="assets/logos/asana-logo.svg" alt="Asana" class="tool-logo" title="Asana" />
+                        <img src="assets/logos/chatgpt-6.svg" alt="ChatGPT" class="tool-logo" title="ChatGPT" />
+                        <img src="assets/logos/appium.svg" alt="Appium" class="tool-logo" title="Appium" />
+                        <img src="assets/logos/cypress-1.svg" alt="Cypress" class="tool-logo" title="Cypress" />
+                        <!-- Repeat for endless scroll -->
+                        <img src="assets/logos/zapier.svg" alt="Zapier" class="tool-logo" title="Zapier" />
+                        <img src="assets/logos/mailchimp-freddie-icon.svg" alt="Mailchimp" class="tool-logo" title="Mailchimp" />
+                        <img src="assets/logos/slack-new-logo.svg" alt="Slack" class="tool-logo" title="Slack" />
+                        <img src="assets/logos/asana-logo.svg" alt="Asana" class="tool-logo" title="Asana" />
+                        <img src="assets/logos/chatgpt-6.svg" alt="ChatGPT" class="tool-logo" title="ChatGPT" />
+                        <img src="assets/logos/appium.svg" alt="Appium" class="tool-logo" title="Appium" />
+                        <img src="assets/logos/cypress-1.svg" alt="Cypress" class="tool-logo" title="Cypress" />
+                    </div>
                 </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/slack-new.png" alt="Slack" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/airtable.png" alt="Airtable" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/mailchimp.png" alt="Mailchimp" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://cdn.worldvectorlogo.com/logos/calendly.svg" alt="Calendly" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Workspace" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/microsoft.png" alt="Microsoft 365" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/power-bi.png" alt="Power BI" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/tableau-software.png" alt="Tableau" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/trello.png" alt="Trello" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/notion.png" alt="Notion" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/github--v1.png" alt="GitHub" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/asana.png" alt="Asana" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/jira.png" alt="Jira" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/figma--v1.png" alt="Figma" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/discord--v1.png" alt="Discord" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/hubspot.png" alt="HubSpot" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/salesforce.png" alt="Salesforce" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-8 h-8 object-contain"/>
-                </div>
-                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
-                    <img src="https://img.icons8.com/color/48/zoom.png" alt="Zoom" class="w-8 h-8 object-contain"/>
+                
+                <!-- Row 2 - Left to Right (slightly slower) -->
+                <div class="tools-scroller-wrapper">
+                    <div class="tools-scroller" style="animation-duration: 25s;">
+                        <img src="assets/logos/google-calendar-icon-2020-.svg" alt="Google Calendar" class="tool-logo" title="Google Calendar" />
+                        <img src="assets/logos/google-data-studio.svg" alt="Google Data Studio" class="tool-logo" title="Google Data Studio" />
+                        <img src="assets/logos/microsoft-azure-3.svg" alt="Microsoft Azure" class="tool-logo" title="Microsoft Azure" />
+                        <img src="assets/logos/microsoft-excel-2013.svg" alt="Microsoft Excel" class="tool-logo" title="Microsoft Excel" />
+                        <img src="assets/logos/postgresql.svg" alt="PostgreSQL" class="tool-logo" title="PostgreSQL" />
+                        <img src="assets/logos/power-bi.svg" alt="Power BI" class="tool-logo" title="Power BI" />
+                        <img src="assets/logos/python-5.svg" alt="Python" class="tool-logo" title="Python" />
+                        <!-- Repeat for endless scroll -->
+                        <img src="assets/logos/google-calendar-icon-2020-.svg" alt="Google Calendar" class="tool-logo" title="Google Calendar" />
+                        <img src="assets/logos/google-data-studio.svg" alt="Google Data Studio" class="tool-logo" title="Google Data Studio" />
+                        <img src="assets/logos/microsoft-azure-3.svg" alt="Microsoft Azure" class="tool-logo" title="Microsoft Azure" />
+                        <img src="assets/logos/microsoft-excel-2013.svg" alt="Microsoft Excel" class="tool-logo" title="Microsoft Excel" />
+                        <img src="assets/logos/postgresql.svg" alt="PostgreSQL" class="tool-logo" title="PostgreSQL" />
+                        <img src="assets/logos/power-bi.svg" alt="Power BI" class="tool-logo" title="Power BI" />
+                        <img src="assets/logos/python-5.svg" alt="Python" class="tool-logo" title="Python" />
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="stats" class="bg-black py-32">
-        <div class="container mx-auto max-w-6xl text-center">
-            <h2 class="text-4xl font-bold mb-4">The Impact of Automation</h2>
-            <p class="text-lg text-gray-400 mb-16">Real numbers. Measurable results.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Stats Section -->
+    <section id="stats" class="bg-white py-20">
+        <div class="container mx-auto max-w-6xl px-6 text-center">
+            <div class="mb-16 fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">The Impact of Automation</h2>
+                <p class="text-lg text-gray-600">Real numbers. Measurable results.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="stats-card fade-up" style="animation-delay: 0.1s;">
-                    <div class="stats-number text-4xl font-bold text-green-400 drop-shadow-lg" data-start="5" data-end="10" data-suffix=" hours">5</div>
+                    <div class="stats-number text-4xl font-bold drop-shadow-sm" data-start="5" data-end="10" data-suffix=" hours">5</div>
                     <div class="stats-subtitle">Hours Saved Per Week</div>
                     <div class="stats-description">5–10 hours per employee</div>
                 </div>
-
-                <div class="stats-card fade-up" style="animation-delay: 0.3s;">
-                    <div class="stats-number text-4xl font-bold text-green-400 drop-shadow-lg" data-start="0" data-end="30" data-suffix="%">0</div>
+                <div class="stats-card fade-up" style="animation-delay: 0.2s;">
+                    <div class="stats-number text-4xl font-bold drop-shadow-sm" data-start="0" data-end="30" data-suffix="%">0</div>
                     <div class="stats-subtitle">Support Cost Reduction</div>
                     <div class="stats-description">30% reduction in support costs</div>
                 </div>
-
-                <div class="stats-card fade-up" style="animation-delay: 0.5s;">
-                    <div class="stats-number text-4xl font-bold text-green-400 drop-shadow-lg" data-start="10" data-end="30" data-suffix="%">10</div>
+                <div class="stats-card fade-up" style="animation-delay: 0.3s;">
+                    <div class="stats-number text-4xl font-bold drop-shadow-sm" data-start="10" data-end="30" data-suffix="%">10</div>
                     <div class="stats-subtitle">Error Recovery Boost</div>
                     <div class="stats-description">10–30% improvement in error recovery</div>
                 </div>
-
-                <div class="stats-card fade-up" style="animation-delay: 0.7s;">
-                    <div class="stats-number text-4xl font-bold text-green-400 drop-shadow-lg" data-start="300" data-end="500" data-suffix="%">300</div>
+                <div class="stats-card fade-up" style="animation-delay: 0.4s;">
+                    <div class="stats-number text-4xl font-bold drop-shadow-sm" data-start="300" data-end="500" data-suffix="%">300</div>
                     <div class="stats-subtitle">Long-Term ROI</div>
                     <div class="stats-description">300–500% long-term return on investment</div>
                 </div>
@@ -615,206 +263,186 @@
         </div>
     </section>
 
-    <section id="pricing" class="bg-gray-900 py-32">
-        <div class="container mx-auto max-w-6xl text-center">
-            <h2 class="text-4xl font-bold mb-4">Choose Your Automation Plan</h2>
-            <p class="text-lg text-gray-400 mb-16">Simple pricing. Scalable results.</p>
-
+    <!-- Pricing Section -->
+    <section id="pricing" class="bg-gray-50 py-20">
+        <div class="container mx-auto max-w-6xl px-6 text-center">
+            <div class="mb-16 fade-up">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">Choose Your Automation Plan</h2>
+                <p class="text-lg text-gray-600">Simple pricing. Scalable results.</p>
+            </div>
+            
             <!-- Add toggle switch for Monthly/Yearly pricing -->
-            <div class="mb-8 flex justify-center items-center gap-4 text-gray-400">
+            <div class="mb-8 flex justify-center items-center gap-4 text-gray-600 fade-up">
                 <span>Monthly</span>
                 <label class="relative inline-flex items-center cursor-pointer">
                     <input type="checkbox" id="billingToggle" class="sr-only peer">
-                    <div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:bg-blue-600 transition duration-300"></div>
-                    <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 peer-checked:translate-x-full"></div>
+                    <div class="w-11 h-6 bg-gray-300 rounded-full peer peer-checked:bg-blue-600 transition duration-500"></div>
+                    <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-500 peer-checked:translate-x-full"></div>
                 </label>
                 <span>Yearly</span>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="pricing-card">
-                    <h3 class="title">Starter</h3>
-                    <div class="price" data-monthly="$500/mo" data-yearly="$5,000/yr">$500/mo</div>
-                    <ul>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">1 Workflow</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Email Support</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Monthly Check-In</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">1 Report + AI Content</li>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
+                <!-- Starter Plan -->
+                <div class="pricing-card fade-up mx-auto" style="animation-delay: 0.1s;">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Starter</h3>
+                    <div class="price-tag">
+                        <small class="text-sm font-medium text-gray-600 uppercase">CAD</small>
+                        <h3 class="text-3xl font-bold text-gray-900" data-monthly="$500/mo" data-yearly="$5,000/yr">$500/mo</h3>
+                    </div>
+                    <ul class="mb-6 space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">1 Workflow</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">Email Support</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">Monthly Check-In</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">1 Report + AI Content</p>
+                        </li>
                     </ul>
-                    <a href="#" class="cta-button">Get Started</a>
+                    <a href="contact.html" class="mt-auto glowing-button">Get Started</a>
                 </div>
-
-                <div class="pricing-card border-2 border-blue-500 shadow-lg scale-105 z-10">
-                    <h3 class="title">Growth</h3>
-                    <div class="price" data-monthly="$1,000/mo" data-yearly="$10,000/yr">$1,000/mo</div>
-                    <ul>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">3 Workflows</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Priority Support</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Biweekly Strategy Calls</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">CRM Setup + Smart Reports</li>
+                
+                <!-- Growth Plan (Most Popular) -->
+                <div class="pricing-card border-2 border-blue-500 shadow-lg z-10 fade-up relative mx-auto" style="animation-delay: 0.3s;">
+                    <div class="ribbon absolute top-0 right-0 bg-blue-600 text-white text-xs px-2 py-1 rounded-bl">Most Popular</div>
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Growth</h3>
+                    <div class="price-tag">
+                        <small class="text-sm font-medium text-gray-600 uppercase">CAD</small>
+                        <h3 class="text-3xl font-bold text-gray-900" data-monthly="$1,000/mo" data-yearly="$10,000/yr">$1,000/mo</h3>
+                    </div>
+                    <ul class="mb-6 space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">3 Workflows</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">Priority Support</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">Biweekly Strategy Calls</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">CRM Setup + Smart Reports</p>
+                        </li>
                     </ul>
-                    <a href="#" class="cta-button">Get Started</a>
+                    <a href="contact.html" class="mt-auto glowing-button">Get Started</a>
                 </div>
-
-                <div class="pricing-card">
-                    <h3 class="title">Enterprise</h3>
-                    <div class="price" data-monthly="Custom" data-yearly="Custom">Custom</div>
-                    <ul>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Unlimited Workflows</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">24/7 Support</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Weekly Strategy</li>
-                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Full AI Stack</li>
+                
+                <!-- Enterprise Plan -->
+                <div class="pricing-card fade-up mx-auto" style="animation-delay: 0.5s;">
+                    <h3 class="text-xl font-bold mb-2 text-gray-900">Enterprise</h3>
+                    <div class="price-tag">
+                        <small class="text-sm font-medium text-gray-600 uppercase">CAD</small>
+                        <h3 class="text-3xl font-bold text-gray-900" data-monthly="Custom" data-yearly="Custom">Custom</h3>
+                    </div>
+                    <ul class="mb-6 space-y-2 text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">Unlimited Workflows</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">24/7 Support</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">Weekly Strategy</p>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-500 text-xl">✔</span>
+                            <p class="text-sm">Full AI Stack</p>
+                        </li>
                     </ul>
-                    <a href="#" class="cta-button">Get Started</a>
+                    <a href="contact.html" class="mt-auto glowing-button">Get Started</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Add minimal footer -->
-    <footer class="text-sm text-gray-400 text-center py-6 border-t border-gray-800">
-        © 2025 ClosR Automation — No manual in the loop. <br />
-        <a href="mailto:hello@closr.ai" class="text-blue-400 hover:underline">hello@closr.ai</a>
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-blue-800 py-16 text-white">
+        <div class="max-w-6xl mx-auto px-6 text-center fade-up">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to automate your business?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Book a free consultation call and discover how ClosR can transform your operations.</p>
+            <a href="contact.html" class="bg-white text-blue-700 hover:bg-gray-100 hover:text-blue-800 px-8 py-4 rounded-lg font-semibold shadow-lg transition duration-300 hover:shadow-xl hover:transform hover:scale-105">Book Your Free Call</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-600 text-center py-12 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-6">
+                <a href="index.html" class="text-2xl font-bold text-gray-900">ClosR</a>
+            </div>
+            <div class="mb-6">
+                <a href="mailto:hello@closr.ai" class="text-blue-600 hover:underline">hello@closr.ai</a>
+            </div>
+            <div class="mb-6 flex justify-center space-x-4">
+                <a href="services.html" class="text-gray-500 hover:text-blue-600">Services</a>
+                <a href="results.html" class="text-gray-500 hover:text-blue-600">Results</a>
+                <a href="contact.html" class="text-gray-500 hover:text-blue-600">Contact</a>
+            </div>
+            <div>© 2025 ClosR Automation — No manual in the loop.</div>
+        </div>
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg z-40 hover:bg-blue-700">
+    <button id="backToTop" class="fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg z-40 hover:bg-blue-700 hidden">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
     </button>
 
     <script>
-        // Initialize components only when needed
         document.addEventListener('DOMContentLoaded', function() {
-            // Setup mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            if(mobileMenuBtn && mobileMenu) {
-                mobileMenuBtn.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                    // Add show class after removing hidden to trigger animation
-                    if(!mobileMenu.classList.contains('hidden')) {
-                        setTimeout(() => {
-                            mobileMenu.classList.add('show');
-                        }, 10); // Small delay to ensure transition happens
-                    } else {
-                        mobileMenu.classList.remove('show');
-                    }
-                });
+            // Hide loader when page is loaded
+            const loader = document.querySelector('.banter-loader');
+            if (loader) {
+                loader.classList.add('hidden-loader');
             }
-            
-            // Setup back to top button
-            const backToTopBtn = document.getElementById('backToTop');
-            
-            function handleScroll() {
-                if (window.scrollY > 300) {
-                    backToTopBtn.classList.add('show');
-                    backToTopBtn.classList.remove('hidden');
-                } else {
-                    backToTopBtn.classList.remove('show');
-                    setTimeout(() => {
-                        if (!backToTopBtn.classList.contains('show')) {
-                            backToTopBtn.classList.add('hidden');
-                        }
-                    }, 300); // Match the duration of the transition
-                }
-            }
-            
-            window.addEventListener('scroll', handleScroll);
-            
-            backToTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-            
-            // Initial check for scroll position
-            handleScroll();
-            
-            // Setup scroll observation for lazy-loaded elements
+            createAnimatedGrid();
+            initMenu();
+            initBackToTop();
             initLazyLoad();
-            
-            // Setup stats section with IntersectionObserver
             initStatsSection();
-            
-            // Setup pricing toggle only when needed
-            initPricingToggleWhenVisible();
+            initPricingToggle();
+            initCustomCursor();
         });
-        
-        // Initialize cursor only when user moves mouse
-        window.addEventListener('mousemove', initCursor, { once: true });
-        
-        // Function to init cursor
-        function initCursor(e) {
-            const cursor = document.getElementById('custom-cursor');
-            cursor.style.opacity = '1';
-            
-            function updateCursorPosition(e) {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            }
-            
-            document.addEventListener('mousemove', updateCursorPosition, { passive: true });
-            updateCursorPosition(e);
-            
-            const hoverables = document.querySelectorAll('a, button, .glowing-button, .logo-bubble');
-            hoverables.forEach(el => {
-                el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
-                el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
-            });
-        }
-        
-        // Initialize lazy-loaded elements
+
+        // Centralized function to handle fade-in animations
         function initLazyLoad() {
-            const lazyElements = document.querySelectorAll('.lazy, .fade-up');
+            const lazyElements = document.querySelectorAll('.fade-up');
             const options = {
                 root: null,
                 rootMargin: '0px',
                 threshold: 0.1
             };
             
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const element = entry.target;
-                        
-                        // Add active class to fade-up elements
-                        if(element.classList.contains('fade-up')) {
-                            element.classList.add('active');
-                        }
-                        
-                        // For hero section - animate text
-                        if (element.closest('#hero')) {
-                            element.classList.add('active');
-                            animateHeroText();
-                        }
-                        
-                        observer.unobserve(element);
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
                     }
                 });
             }, options);
             
             lazyElements.forEach(el => observer.observe(el));
         }
-        
-        // Animate hero text when visible
-        function animateHeroText() {
-            const headline = document.getElementById('headline');
-            const text = "We Automate Everything";
-            let index = 0;
-            
-            function typeWriter() {
-                if (index < text.length) {
-                    headline.innerHTML += text.charAt(index);
-                    index++;
-                    requestAnimationFrame(() => setTimeout(typeWriter, 60));
-                }
-            }
-            
-            typeWriter();
-        }
-        
-        // Initialize stats section with intersection observer
+
+        // Function to handle stats counter animation
         function initStatsSection() {
             const statsSection = document.getElementById('stats');
             const statsElements = document.querySelectorAll('.stats-number');
@@ -830,7 +458,7 @@
                 });
             }, { threshold: 0.2 });
             
-            observer.observe(statsSection);
+            if (statsSection) observer.observe(statsSection);
             
             function animateStats() {
                 statsElements.forEach(statsNumber => {
@@ -840,54 +468,133 @@
                     const duration = 2000;
                     const range = end - start;
                     const startTime = performance.now();
-                    
+
                     function updateCounter(timestamp) {
                         const elapsed = timestamp - startTime;
                         const progress = Math.min(elapsed / duration, 1);
                         const currentValue = Math.floor(start + progress * range);
-                        
                         statsNumber.textContent = currentValue + suffix;
-                        
                         if (progress < 1) {
                             requestAnimationFrame(updateCounter);
                         } else {
                             statsNumber.textContent = end + suffix;
                         }
                     }
-                    
                     requestAnimationFrame(updateCounter);
                 });
             }
         }
-        
-        // Initialize pricing toggle only when section is visible
-        function initPricingToggleWhenVisible() {
-            const pricingSection = document.getElementById('pricing');
+
+        // Function to initialize pricing toggle
+        function initPricingToggle() {
             const toggle = document.getElementById('billingToggle');
-            const prices = document.querySelectorAll('.price');
-            let toggleInitialized = false;
+            const prices = document.querySelectorAll('[data-monthly]');
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !toggleInitialized) {
-                        // Initialize toggle logic
-                        toggle.addEventListener('change', () => {
-                            prices.forEach(price => {
-                                if (toggle.checked) {
-                                    price.textContent = price.dataset.yearly;
-                                } else {
-                                    price.textContent = price.dataset.monthly;
-                                }
-                            });
-                        });
-                        
-                        toggleInitialized = true;
-                        observer.disconnect();
-                    }
+            if (toggle) {
+                toggle.addEventListener('change', () => {
+                    prices.forEach(price => {
+                        price.textContent = toggle.checked 
+                            ? price.dataset.yearly 
+                            : price.dataset.monthly;
+                    });
                 });
-            }, { threshold: 0.1 });
+            }
+        }
+
+        // Function to create animated grid in hero section
+        function createAnimatedGrid() {
+            const grid = document.querySelector('.animated-grid');
+            if (!grid) return;
+
+            // Create horizontal lines
+            for (let i = 0; i < 10; i++) {
+                const line = document.createElement('div');
+                line.className = 'animated-grid-line horizontal';
+                line.style.top = `${i * 10}%`;
+                grid.appendChild(line);
+            }
             
-            observer.observe(pricingSection);
+            // Create vertical lines
+            for (let i = 0; i < 10; i++) {
+                const line = document.createElement('div');
+                line.className = 'animated-grid-line vertical';
+                line.style.left = `${i * 10}%`;
+                grid.appendChild(line);
+            }
+        }
+
+        // Initialize menu
+        function initMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menu = document.getElementById('menu');
+            
+            if (!menuToggle || !menu) return;
+            
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('hidden');
+                menu.classList.toggle('flex');
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on menu items
+            const menuItems = menu.querySelectorAll('a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    menu.classList.remove('flex');
+                    menuToggle.classList.remove('active');
+                });
+            });
+        }
+
+        // Initialize back to top button
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('backToTop');
+            if (!backToTopBtn) return;
+
+            function handleScroll() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                    setTimeout(() => {
+                        if (!backToTopBtn.classList.contains('show')) {
+                            backToTopBtn.classList.add('hidden');
+                        }
+                    }, 300);
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            handleScroll();
+        }
+        
+        // Custom cursor functionality
+        function initCustomCursor() {
+            const cursor = document.getElementById('custom-cursor');
+            if (!cursor) return;
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            });
+            
+            // Add hover effect to interactive elements
+            const interactiveElements = document.querySelectorAll('a, button, .feature-card, .pricing-card, .service-card, .stats-card, .glowing-button');
+            
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover');
+                });
+                
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                });
+            });
         }
     </script>
 </body>
