@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Let’s Talk</title>
+    <title>Let's Build It Together | ClosR Automation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <meta name="description" content="ClosR Automation – Business automation & AI services to save time, reduce cost, and scale smartly." />
+    <meta name="description" content="ClosR Automation – Schedule a call to discuss your workflow automation needs." />
     <meta name="author" content="ClosR Automation" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="ClosR Automation" />
-    <meta property="og:description" content="Smart, scalable automation for modern businesses." />
+    <meta property="og:title" content="Let's Build It Together | ClosR Automation" />
+    <meta property="og:description" content="We'll audit your workflows, recommend systems, and build fast." />
     <meta property="og:type" content="website" />
     <style>
         body {
@@ -21,48 +21,21 @@
             color: white;
         }
 
-        /* Glassmorphism Form Styles */
-        .contact-form {
+        /* Glassmorphism Card Styles */
+        .glass-card {
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
         }
 
-        .contact-form .input-wrapper {
-            position: relative;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: white;
-            padding: 0.75rem;
-            width: 100%;
-            transition: border-color 0.3s;
-            padding-left: 3rem; /* Space for icon */
-            background: rgba(255, 255, 255, 0.05); /* Glassmorphism */
-            backdrop-filter: blur(5px);
-        }
-
-        .contact-form .input-icon {
-            position: absolute;
-            left: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ddd;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            border-color: #4CAF50;
-            outline: none;
-            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.3);
         }
 
         /* Glowing Button Styles */
@@ -79,7 +52,7 @@
             background: linear-gradient(to right, #4CAF50, #2196F3);
             overflow: hidden;
             z-index: 1;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.3s;
         }
 
         .glowing-button::before {
@@ -98,6 +71,7 @@
 
         .glowing-button:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 15px #4CAF50, 0 0 25px #2196F3;
         }
 
         .glowing-button:hover::before {
@@ -117,62 +91,131 @@
             transform: translateY(0);
         }
 
-        /* Calendly Styles */
-        .calendly-card {
+        /* Grid bg animation */
+        .grid-bg {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* Calendly wrapper styles */
+        .calendly-wrapper {
+            position: relative;
             border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+            transition: all 0.5s ease;
         }
 
-        .calendly-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        .calendly-wrapper:hover {
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
+        .calendly-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(to right, #4CAF50, #2196F3);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Progress Strip */
+        .progress-step {
+            position: relative;
+        }
+
+        .progress-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(59, 130, 246, 0.2);
+            transform: translateY(-50%);
+        }
+
+        .progress-step:last-child::after {
+            display: none;
+        }
+
+        .progress-step.active .step-number {
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .progress-step:hover .step-number {
+            transform: scale(1.1);
+            background-color: rgba(59, 130, 246, 0.2);
+        }
+
+        /* Shimmer Animation */
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
             }
-            to {
-                opacity: 1;
+            100% {
+                background-position: 1000px 0;
             }
         }
 
-        .fade-in {
-            animation: fadeIn 1s ease-in-out forwards;
+        .shimmer {
+            animation: shimmer 2s infinite linear;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+            background-size: 1000px 100%;
         }
 
-        /* Spinner Animation */
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        .spinner {
-            display: inline-block;
-            animation: spin 1s linear infinite;
+        /* Back to Top Button Animation */
+        #backToTop {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
         }
 
-        /* Dark Mode Styles */
-        .dark body {
-            background-color: #000;
-            color: #f8f8f8;
+        #backToTop.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .dark .contact-form {
-            background: rgba(30, 30, 30, 0.1);
-            border-color: rgba(255, 255, 255, 0.05);
+        /* Mobile Menu Animation */
+        #mobileMenu {
+            transition: all 0.3s ease;
+            transform: translateY(-10px);
+            opacity: 0;
         }
 
-        /* Newsletter Modal Animation */
-        @keyframes slideIn {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .slide-in {
-            animation: slideIn 0.5s ease forwards;
+        #mobileMenu.show {
+            transform: translateY(0);
+            opacity: 1;
         }
     </style>
 </head>
@@ -180,180 +223,248 @@
     <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"></div>
     <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
     
-    <button id="toggleDark" class="fixed top-4 right-4 z-50 bg-white/10 text-white px-3 py-1 rounded text-sm hover:bg-white/20 transition">
-        🌓 Toggle
-    </button>
-    
-    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/50 backdrop-blur px-4 py-2 rounded-full shadow text-sm text-white">
-        <a href="index.html" class="mx-2 hover:underline">Home</a>
-        <a href="services.html" class="mx-2 hover:underline">Services</a>
-        <a href="results.html" class="mx-2 hover:underline">Results</a>
-        <a href="contact.html" class="mx-2 text-blue-400 font-semibold">Contact</a>
+    <!-- Sticky Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 backdrop-blur bg-black/70 shadow">
+        <div class="container max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-white hover:text-blue-400 transition duration-300">
+                <a href="index.html">ClosR</a>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link text-white hover:text-blue-400 transition duration-300">Home</a>
+                <a href="services.html" class="nav-link text-white hover:text-blue-400 transition duration-300">Services</a>
+                <a href="results.html" class="nav-link text-white hover:text-blue-400 transition duration-300">Results</a>
+                <a href="contact.html" class="nav-link text-blue-400 transition duration-300">Contact</a>
+            </div>
+            <div class="block md:hidden">
+                <button id="mobileMenuBtn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black/90 backdrop-blur w-full">
+            <div class="container px-6 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-white hover:text-blue-400 transition duration-300">Home</a>
+                <a href="services.html" class="text-white hover:text-blue-400 transition duration-300">Services</a>
+                <a href="results.html" class="text-white hover:text-blue-400 transition duration-300">Results</a>
+                <a href="contact.html" class="text-blue-400 transition duration-300">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <header class="text-center py-16 fade-up" style="animation-delay: 0.2s;">
-        <h1 class="text-4xl font-bold">Let’s Talk</h1>
-        <p class="text-lg text-gray-400">We respond to all serious inquiries within <span class="relative group text-blue-400">
-            response time
-            <span class="absolute left-0 -top-6 text-xs bg-black px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 text-green-400 font-mono">
-              // 24 hours or less
-            </span>
-          </span>.</p>
-    </header>
-
-    <section id="contact" class="py-16">
-        <div class="container mx-auto max-w-md">
-            <form class="contact-form fade-up" action="https://formspree.io/f/movepala" method="POST" id="contactForm">
-                <input type="hidden" name="_redirect" value="thankyou.html">
-                <div class="mb-4 relative" style="animation-delay: 0.3s;">
-                    <label for="fullName" class="block text-gray-300 text-sm font-bold mb-2">Full Name</label>
-                    <div class="relative">
-                        <input 
-                            type="text" 
-                            id="fullName" 
-                            placeholder="Your Full Name" 
-                            name="name" 
-                            class="pl-10 focus:ring-2 focus:outline-none"
-                            required 
-                            minlength="2">
-                        <span class="absolute left-3 top-3 text-gray-400">👤</span>
-                    </div>
-                    <p class="text-red-500 text-sm mt-1 hidden" id="nameError">Name must be at least 2 characters long</p>
-                </div>
-                <div class="mb-4 relative" style="animation-delay: 0.4s;">
-                    <label for="email" class="block text-gray-300 text-sm font-bold mb-2">Email</label>
-                    <div class="relative">
-                        <input 
-                            type="email" 
-                            id="email" 
-                            placeholder="Your Email Address" 
-                            name="email" 
-                            class="pl-10 focus:ring-2 focus:outline-none"
-                            required>
-                        <span class="absolute left-3 top-3 text-gray-400">📧</span>
-                    </div>
-                    <p class="text-red-500 text-sm mt-1 hidden" id="emailError">Please enter a valid email address</p>
-                </div>
-                <div class="mb-6 relative" style="animation-delay: 0.5s;">
-                    <label for="message" class="block text-gray-300 text-sm font-bold mb-2">Message</label>
-                    <div class="relative">
-                        <textarea 
-                            id="message" 
-                            rows="5" 
-                            placeholder="Your Message" 
-                            name="message" 
-                            class="pl-10 focus:ring-2 focus:outline-none"
-                            required 
-                            minlength="10"></textarea>
-                        <span class="absolute left-3 top-3 text-gray-400">📝</span>
-                    </div>
-                    <p class="text-red-500 text-sm mt-1 hidden" id="messageError">Message must be at least 10 characters long</p>
-                </div>
-                <div class="text-center">
-                    <button id="submitBtn" type="submit" class="glowing-button mt-4 transition-all">Submit</button>
-                </div>
-            </form>
-            
-            <p class="text-gray-400 text-sm mt-10 text-center">
-              Prefer to email us directly? 
-              <span 
-                id="copyEmailBtn"
-                class="bg-white/10 px-2 py-1 rounded cursor-pointer hover:text-blue-400 transition duration-200 inline-block ml-1">
-                Click to copy our email
-              </span>
-            </p>
+    <!-- Hero Section with Grid Background -->
+    <section class="grid-bg min-h-[40vh] flex items-center justify-center pt-24 pb-12 relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-800/10 z-0"></div>
+        <div class="container max-w-3xl mx-auto px-6 text-center relative z-10">
+            <div class="fade-up">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white leading-tight">Let's Build It Together</h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">We'll audit your workflows, recommend systems, and build fast.</p>
+            </div>
         </div>
     </section>
 
-    <svg class="w-full h-12 text-[#0a0a0a]" viewBox="0 0 1440 100" fill="currentColor" preserveAspectRatio="none">
-        <path d="M0,0 C600,100 800,0 1440,100 L1440,0 L0,0 Z"></path>
-    </svg>
-
-    <section id="calendly" class="py-16 fade-up" style="animation-delay: 0.6s;">
-        <div class="container mx-auto max-w-4xl">
-            <header class="text-center mb-6 fade-up">
-                <h2 class="text-2xl font-semibold">Book a Free Automation Call</h2>
-                <p class="text-gray-400 text-sm">Get hands-on advice & workflow ideas — no strings attached</p>
-            </header>
+    <!-- Calendly Embed Section -->
+    <section class="py-16">
+        <div class="container max-w-4xl mx-auto px-6">
             <div class="relative">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-800 to-transparent opacity-30 blur-3xl z-0"></div>
-                <div id="calendlyWrapper" class="bg-black/40 p-6 rounded-xl border border-blue-500/30 shadow-lg backdrop-blur fade-up mt-10 relative z-10">
-                    <div class="animate-pulse bg-gray-800 h-[700px] w-full rounded-xl mb-4 absolute inset-0"></div>
-                    <!-- Calendly iframe will be injected here when scrolled into view -->
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-800/20 rounded-xl blur-3xl z-0"></div>
+                <div class="calendly-wrapper glass-card fade-up relative z-10">
+                    <div class="bg-black/40 p-2 md:p-4 min-h-[500px] md:min-h-[600px]">
+                        <div id="calendlyPreloader" class="absolute inset-0 flex items-center justify-center bg-gray-900/80 rounded-xl z-10 shimmer overflow-hidden">
+                            <div class="text-center">
+                                <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500 mx-auto mb-4"></div>
+                                <p class="text-gray-400">Loading calendar...</p>
+                            </div>
+                        </div>
+                        <div id="calendlyEmbed" class="w-full h-full min-h-[500px] md:min-h-[600px]"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="text-center py-4 text-sm text-gray-500">© ClosR Automation — All Rights Reserved</footer>
+    <!-- What Happens Next Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 text-center fade-up">What Happens Next</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="fade-up" style="animation-delay: 0.1s;">
+                    <div class="glass-card h-full p-6 text-center flex flex-col items-center">
+                        <div class="text-4xl mb-4">🆓</div>
+                        <h3 class="text-xl font-bold mb-3">Free Call</h3>
+                        <p class="text-gray-300 text-sm">We discuss your workflow and identify time-wasters.</p>
+                    </div>
+                </div>
+                
+                <div class="fade-up" style="animation-delay: 0.2s;">
+                    <div class="glass-card h-full p-6 text-center flex flex-col items-center">
+                        <div class="text-4xl mb-4">📋</div>
+                        <h3 class="text-xl font-bold mb-3">Audit</h3>
+                        <p class="text-gray-300 text-sm">$150 audit credited toward build. Done in 1–2 days.</p>
+                    </div>
+                </div>
+                
+                <div class="fade-up" style="animation-delay: 0.3s;">
+                    <div class="glass-card h-full p-6 text-center flex flex-col items-center">
+                        <div class="text-4xl mb-4">⚡</div>
+                        <h3 class="text-xl font-bold mb-3">Launch</h3>
+                        <p class="text-gray-300 text-sm">You get your first automation live in under 2–3 weeks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <button id="scrollToTop" class="hidden fixed bottom-6 right-6 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:scale-110 transition z-40">
-        ↑ Top
-    </button>
+    <!-- Progress Strip -->
+    <section class="py-12">
+        <div class="container max-w-4xl mx-auto px-6">
+            <div class="grid grid-cols-3 gap-2 text-center fade-up">
+                <div class="progress-step active">
+                    <div class="step-number">1</div>
+                    <p class="text-sm text-gray-300">Book Call</p>
+                </div>
+                <div class="progress-step">
+                    <div class="step-number">2</div>
+                    <p class="text-sm text-gray-300">Get Audit</p>
+                </div>
+                <div class="progress-step">
+                    <div class="step-number">3</div>
+                    <p class="text-sm text-gray-300">Launch</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div id="newsletterModal" class="fixed bottom-4 left-4 bg-black/80 text-white p-4 rounded-xl shadow-lg w-72 z-50 hidden">
-        <button id="closeModal" class="absolute top-2 right-2 text-gray-400 hover:text-white">&times;</button>
-        <h3 class="font-bold text-lg mb-2">Join ClosR Beta</h3>
-        <p class="text-sm text-gray-300">Get early access & automation templates.</p>
-        <input class="w-full mt-2 p-2 text-black rounded" type="email" placeholder="you@email.com">
-        <button class="mt-2 glowing-button w-full text-sm py-2">Join</button>
+    <!-- Email Fallback -->
+    <div class="text-center my-12 fade-up">
+        <p class="text-gray-400 text-sm">Prefer email?</p>
+        <a href="mailto:hello@closr.ai" class="text-blue-400 hover:underline text-sm mt-2 inline-block">hello@closr.ai</a>
     </div>
 
-    <script defer>
+    <!-- Footer -->
+    <footer class="text-sm text-gray-400 text-center py-6 border-t border-gray-800">
+        © 2025 ClosR Automation — No manual in the loop. <br />
+        <a href="mailto:hello@closr.ai" class="text-blue-400 hover:underline">hello@closr.ai</a>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg z-40 hover:bg-blue-700 hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize viewport checker for fade-up animations
-            initViewportChecker();
+            // Setup mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
             
-            // Initialize form validation and memory
-            initFormHandling();
-            
-            // Initialize scrollToTop button
-            initScrollToTop();
-            
-            // Initialize dark mode
-            initDarkMode();
-            
-            // Initialize newsletter modal with delay
-            initNewsletterModal();
-            
-            // Initialize Calendly lazy loading
-            initCalendlyLazyLoad();
-            
-            // Setup email copy functionality
-            document.getElementById('copyEmailBtn').addEventListener('click', copyEmail);
-        });
-        
-        // Initialize custom cursor only on mouse movement
-        window.addEventListener('mousemove', initCursor, { once: true });
-        
-        // Function to check if an element is in the viewport
-        function isElementInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-        
-        // Function to handle fade-up animations
-        function initViewportChecker() {
-            const fadeUpElements = document.querySelectorAll('.fade-up');
-            
-            function handleScroll() {
-                fadeUpElements.forEach(el => {
-                    if (isElementInViewport(el)) {
-                        el.classList.add('active');
+            if(mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    // Add show class after removing hidden to trigger animation
+                    if(!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            mobileMenu.classList.add('show');
+                        }, 10); // Small delay to ensure transition happens
+                    } else {
+                        mobileMenu.classList.remove('show');
                     }
                 });
             }
             
-            window.addEventListener('scroll', handleScroll, { passive: true });
-            handleScroll(); // Initial check
-        }
+            // Setup fade-up animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.fade-up').forEach(el => {
+                fadeObserver.observe(el);
+            });
+            
+            // Initialize Calendly with lazy loading
+            const calendlyObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const embed = document.getElementById('calendlyEmbed');
+                        const preloader = document.getElementById('calendlyPreloader');
+                        
+                        // Initialize Calendly script
+                        const script = document.createElement('script');
+                        script.src = 'https://assets.calendly.com/assets/external/widget.js';
+                        script.async = true;
+                        document.head.appendChild(script);
+                        
+                        script.onload = function() {
+                            // Initialize Calendly
+                            Calendly.initInlineWidget({
+                                url: 'https://calendly.com/closr/30min',
+                                parentElement: embed,
+                                prefill: {},
+                                utm: {}
+                            });
+                            
+                            // Hide preloader after slight delay to ensure widget loads
+                            setTimeout(() => {
+                                preloader.style.opacity = '0';
+                                setTimeout(() => {
+                                    preloader.style.display = 'none';
+                                }, 500);
+                            }, 1500);
+                        };
+                        
+                        calendlyObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            calendlyObserver.observe(document.querySelector('.calendly-wrapper'));
+            
+            // Back to top button
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            function handleScroll() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                    setTimeout(() => {
+                        if (!backToTopBtn.classList.contains('show')) {
+                            backToTopBtn.classList.add('hidden');
+                        }
+                    }, 300);
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Initial check for scroll position
+            handleScroll();
+        });
         
-        // Initialize custom cursor
+        // Initialize cursor only when user moves mouse
+        window.addEventListener('mousemove', initCursor, { once: true });
+        
+        // Function to init cursor
         function initCursor(e) {
             const cursor = document.getElementById('custom-cursor');
             cursor.style.opacity = '1';
@@ -366,274 +477,10 @@
             document.addEventListener('mousemove', updateCursorPosition, { passive: true });
             updateCursorPosition(e);
             
-            // Add hover effect to interactive elements
-            const hoverables = document.querySelectorAll('a, button, .glowing-button, input, textarea, #toggleDark, #scrollToTop, #copyEmailBtn');
+            const hoverables = document.querySelectorAll('a, button, .glowing-button, .glass-card, .progress-step');
             hoverables.forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
                 el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
-            });
-        }
-        
-        // Initialize form validation and memory
-        function initFormHandling() {
-            const form = document.getElementById('contactForm');
-            const nameInput = document.getElementById('fullName');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-            const submitBtn = document.getElementById('submitBtn');
-            
-            const nameError = document.getElementById('nameError');
-            const emailError = document.getElementById('emailError');
-            const messageError = document.getElementById('messageError');
-            
-            // Email regex for basic validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            // Function to validate the form
-            function validateForm() {
-                let isValid = true;
-                
-                // Validate name
-                if (nameInput.value.length < 2) {
-                    nameInput.classList.add('border-red-500', 'focus:ring-red-500');
-                    nameInput.classList.remove('border-green-500', 'focus:ring-green-500');
-                    nameError.classList.remove('hidden');
-                    isValid = false;
-                } else {
-                    nameInput.classList.remove('border-red-500', 'focus:ring-red-500');
-                    nameInput.classList.add('border-green-500', 'focus:ring-green-500');
-                    nameError.classList.add('hidden');
-                }
-                
-                // Validate email
-                if (!emailRegex.test(emailInput.value)) {
-                    emailInput.classList.add('border-red-500', 'focus:ring-red-500');
-                    emailInput.classList.remove('border-green-500', 'focus:ring-green-500');
-                    emailError.classList.remove('hidden');
-                    isValid = false;
-                } else {
-                    emailInput.classList.remove('border-red-500', 'focus:ring-red-500');
-                    emailInput.classList.add('border-green-500', 'focus:ring-green-500');
-                    emailError.classList.add('hidden');
-                }
-                
-                // Validate message
-                if (messageInput.value.length < 10) {
-                    messageInput.classList.add('border-red-500', 'focus:ring-red-500');
-                    messageInput.classList.remove('border-green-500', 'focus:ring-green-500');
-                    messageError.classList.remove('hidden');
-                    isValid = false;
-                } else {
-                    messageInput.classList.remove('border-red-500', 'focus:ring-red-500');
-                    messageInput.classList.add('border-green-500', 'focus:ring-green-500');
-                    messageError.classList.add('hidden');
-                }
-                
-                // Update submit button state
-                if (!isValid) {
-                    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                } else {
-                    submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-                
-                return isValid;
-            }
-            
-            // Form field memory
-            const formFields = {
-                fullName: nameInput,
-                email: emailInput,
-                message: messageInput
-            };
-            
-            // Load saved values from localStorage
-            if (localStorage.getItem('contactForm')) {
-                try {
-                    const savedForm = JSON.parse(localStorage.getItem('contactForm'));
-                    formFields.fullName.value = savedForm.fullName || '';
-                    formFields.email.value = savedForm.email || '';
-                    formFields.message.value = savedForm.message || '';
-                    
-                    // Trigger validation after restoring values
-                    validateForm();
-                } catch (e) {
-                    console.error('Error loading saved form data');
-                    localStorage.removeItem('contactForm');
-                }
-            }
-            
-            // Save field values with debounce
-            const debounce = (func, delay) => {
-                let debounceTimer;
-                return function() {
-                    clearTimeout(debounceTimer);
-                    debounceTimer = setTimeout(() => func.apply(this, arguments), delay);
-                };
-            };
-            
-            const saveFormData = debounce(() => {
-                const formData = {};
-                Object.keys(formFields).forEach(field => {
-                    formData[field] = formFields[field].value;
-                });
-                localStorage.setItem('contactForm', JSON.stringify(formData));
-            }, 500);
-            
-            // Add event listeners
-            nameInput.addEventListener('input', () => {
-                validateForm();
-                saveFormData();
-            });
-            
-            emailInput.addEventListener('input', () => {
-                validateForm();
-                saveFormData();
-            });
-            
-            messageInput.addEventListener('input', () => {
-                validateForm();
-                saveFormData();
-            });
-            
-            // Form submission with loading state
-            form.addEventListener('submit', function(e) {
-                if (!validateForm()) {
-                    e.preventDefault();
-                    return;
-                }
-                
-                // Show loading state
-                submitBtn.innerHTML = '<span class="spinner">⏳</span> Sending...';
-                submitBtn.disabled = true;
-                submitBtn.classList.add('opacity-70');
-                
-                // Clear localStorage after successful submission
-                localStorage.removeItem('contactForm');
-            });
-        }
-        
-        // Initialize scroll to top button
-        function initScrollToTop() {
-            const scrollToTopBtn = document.getElementById('scrollToTop');
-            
-            function checkScrollPosition() {
-                if (window.pageYOffset > 400) {
-                    scrollToTopBtn.classList.remove('hidden');
-                } else {
-                    scrollToTopBtn.classList.add('hidden');
-                }
-            }
-            
-            window.addEventListener('scroll', checkScrollPosition, { passive: true });
-            
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        }
-        
-        // Initialize dark mode toggle
-        function initDarkMode() {
-            const toggleDarkBtn = document.getElementById('toggleDark');
-            const htmlElement = document.documentElement;
-            
-            // Check for saved dark mode preference
-            if (localStorage.getItem('darkMode') === 'true') {
-                htmlElement.classList.add('dark');
-            }
-            
-            toggleDarkBtn.addEventListener('click', () => {
-                htmlElement.classList.toggle('dark');
-                localStorage.setItem('darkMode', htmlElement.classList.contains('dark'));
-            });
-        }
-        
-        // Initialize newsletter modal
-        function initNewsletterModal() {
-            const newsletterModal = document.getElementById('newsletterModal');
-            const closeModal = document.getElementById('closeModal');
-            let hasShownModal = false;
-            
-            // Check if modal was previously closed
-            if (localStorage.getItem('modalClosed')) {
-                return;
-            }
-            
-            // Show modal after 20 seconds
-            setTimeout(() => {
-                if (!hasShownModal) {
-                    showNewsletterModal();
-                }
-            }, 20000);
-            
-            // Show modal when scrolled 60%
-            let scrollHandler = () => {
-                const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-                if (scrollPercent > 60 && !hasShownModal) {
-                    showNewsletterModal();
-                    window.removeEventListener('scroll', scrollHandler);
-                }
-            };
-            
-            window.addEventListener('scroll', scrollHandler, { passive: true });
-            
-            function showNewsletterModal() {
-                newsletterModal.classList.remove('hidden');
-                newsletterModal.classList.add('slide-in');
-                hasShownModal = true;
-            }
-            
-            closeModal.addEventListener('click', () => {
-                newsletterModal.classList.add('hidden');
-                localStorage.setItem('modalClosed', 'true');
-            });
-        }
-        
-        // Initialize Calendly lazy loading
-        function initCalendlyLazyLoad() {
-            const calendlyWrapper = document.getElementById('calendlyWrapper');
-            let calendlyLoaded = false;
-            
-            function loadCalendly() {
-                if (calendlyLoaded) return;
-                
-                const rect = calendlyWrapper.getBoundingClientRect();
-                const isNearViewport = rect.top < window.innerHeight * 1.5; // Load when within 1.5x viewport height
-                
-                if (isNearViewport) {
-                    calendlyLoaded = true;
-                    
-                    const iframe = document.createElement('iframe');
-                    iframe.src = "https://calendly.com/princeaiautomation/1hour?hide_event_type_details=1&hide_gdpr_banner=1";
-                    iframe.width = "100%";
-                    iframe.height = "700";
-                    iframe.frameBorder = "0";
-                    iframe.scrolling = "no";
-                    iframe.loading = "lazy";
-                    iframe.style.position = "relative";
-                    iframe.style.zIndex = "10";
-                    iframe.style.opacity = "0";
-                    iframe.style.animation = "fadeIn 1s ease forwards 0.2s";
-                    
-                    calendlyWrapper.appendChild(iframe);
-                    window.removeEventListener('scroll', loadCalendly);
-                }
-            }
-            
-            window.addEventListener('scroll', loadCalendly, { passive: true });
-            loadCalendly(); // Check initial position
-        }
-        
-        // Copy email function
-        function copyEmail() {
-            navigator.clipboard.writeText("uwagboe.o.p@gmail.com").then(() => {
-                const msg = document.createElement('div');
-                msg.textContent = "📋 Copied!";
-                msg.className = "fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded shadow z-50 animate-pulse";
-                document.body.appendChild(msg);
-                setTimeout(() => msg.remove(), 2000);
             });
         }
     </script>

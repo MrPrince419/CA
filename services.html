@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Core Services</title>
+    <title>What We Do | ClosR Automation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,7 +11,7 @@
     <meta name="description" content="ClosR Automation – Business automation & AI services to save time, reduce cost, and scale smartly." />
     <meta name="author" content="ClosR Automation" />
     <meta name="robots" content="index, follow" />
-    <meta property="og:title" content="ClosR Automation" />
+    <meta property="og:title" content="What We Do | ClosR Automation" />
     <meta property="og:description" content="Smart, scalable automation for modern businesses." />
     <meta property="og:type" content="website" />
     <style>
@@ -30,13 +30,16 @@
             -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s, opacity 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 8px 40px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
         }
 
         .service-card h3 {
@@ -46,34 +49,57 @@
         }
 
         .service-card .icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .icon {
+            transform: scale(1.1);
+        }
+
+        .service-card .description {
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 1.5rem;
         }
 
         .service-card ul {
             list-style: none;
             padding: 0;
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .service-card li {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #ddd;
             margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .service-card li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
         }
 
         .service-card .tool-stack {
             display: flex;
             justify-content: center;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-top: auto;
         }
 
         .service-card .tool-stack img {
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             transition: transform 0.3s;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px;
         }
 
         .service-card:hover .tool-stack img {
@@ -94,7 +120,7 @@
             background: linear-gradient(to right, #4CAF50, #2196F3);
             overflow: hidden;
             z-index: 1;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.3s;
         }
 
         .glowing-button::before {
@@ -113,6 +139,7 @@
 
         .glowing-button:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 15px #4CAF50, 0 0 25px #2196F3;
         }
 
         .glowing-button:hover::before {
@@ -131,162 +158,505 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Filter tab styles */
+        .filter-tab {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease, transform 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .filter-tab:hover {
+            transform: scale(1.05);
+        }
+
+        .filter-tab.active {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .filter-tab::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .filter-tab:hover::after,
+        .filter-tab.active::after {
+            width: 100%;
+        }
+
+        /* Grid bg animation */
+        .grid-bg {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                            linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        /* Back to Top Button Animation */
+        #backToTop {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Industry card */
+        .industry-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Mobile Menu Animation */
+        #mobileMenu {
+            transition: all 0.3s ease;
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+
+        #mobileMenu.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"></div>
+    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"></div>
     <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
-    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/50 backdrop-blur px-4 py-2 rounded-full shadow text-sm text-white">
-        <a href="index.html" class="mx-2 hover:underline">Home</a>
-        <a href="services.html" class="mx-2 text-blue-400 font-semibold">Services</a>
-        <a href="results.html" class="mx-2 hover:underline">Results</a>
-        <a href="contact.html" class="mx-2 hover:underline">Contact</a>
+    
+    <!-- Sticky Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 backdrop-blur bg-black/70 shadow">
+        <div class="container max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-white hover:text-blue-400 transition duration-300">
+                <a href="index.html">ClosR</a>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link text-white hover:text-blue-400 transition duration-300">Home</a>
+                <a href="services.html" class="nav-link text-blue-400 transition duration-300">Services</a>
+                <a href="results.html" class="nav-link text-white hover:text-blue-400 transition duration-300">Results</a>
+                <a href="contact.html#calendly" class="nav-link text-white hover:text-blue-400 transition duration-300">Contact</a>
+            </div>
+            <div class="block md:hidden">
+                <button id="mobileMenuBtn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black/90 backdrop-blur w-full">
+            <div class="container px-6 py-4 flex flex-col space-y-4">
+                <a href="index.html" class="text-white hover:text-blue-400 transition duration-300">Home</a>
+                <a href="services.html" class="text-blue-400 transition duration-300">Services</a>
+                <a href="results.html" class="text-white hover:text-blue-400 transition duration-300">Results</a>
+                <a href="contact.html#calendly" class="text-white hover:text-blue-400 transition duration-300">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <header class="text-center py-16 fade-up">
-        <h1 class="text-4xl font-bold mb-4">Our Core Services</h1>
-        <p class="text-lg text-gray-400">Everything you need to streamline your business</p>
-    </header>
-
-    <section id="services" class="py-16">
-        <div class="container mx-auto max-w-6xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
-                <a href="#" class="block">
-                    <div class="service-card fade-up transition duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:border-blue-500 border border-blue-500/10 backdrop-blur" style="animation-delay: 0.2s;">
-                        <div class="icon text-4xl transition hover:text-blue-500 hover:scale-110">⚙️</div>
-                        <h3>Workflow <span class="relative group text-blue-400">
-                            Automation
-                            <span class="absolute left-0 -top-6 text-xs bg-black px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 text-green-400 font-mono">
-                              // machines doing the work
-                            </span>
-                          </span></h3>
-                        <ul>
-                            <li>Auto-posting</li>
-                            <li>Auto-CRM updates</li>
-                            <li>Automated Reporting</li>
-                        </ul>
-                        <div class="tool-stack">
-                            <div title="Zapier"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                            <div title="Make"><img src="https://img.icons8.com/color/48/make.png" alt="Make" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                            <div title="Airtable"><img src="https://img.icons8.com/color/48/airtable.png" alt="Airtable" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="block">
-                    <div class="service-card fade-up transition duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:border-blue-500 border border-blue-500/10 backdrop-blur" style="animation-delay: 0.4s;">
-                        <div class="icon text-4xl transition hover:text-blue-500 hover:scale-110">🤖</div>
-                        <h3>AI Solutions</h3>
-                        <ul>
-                            <li>AI Content Creation</li>
-                            <li>Predictive Analytics</li>
-                            <li>Smart Chatbots</li>
-                        </ul>
-                        <div class="tool-stack">
-                            <div title="ChatGPT"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                            <div title="Google AI"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google AI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                            <div title="Microsoft AI"><img src="https://img.icons8.com/fluency/48/microsoft.png" alt="Microsoft AI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="block">
-                    <div class="service-card fade-up transition duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:border-blue-500 border border-blue-500/10 backdrop-blur" style="animation-delay: 0.6s;">
-                        <div class="icon text-4xl transition hover:text-blue-500 hover:scale-110">📊</div>
-                        <h3>Data Analytics</h3>
-                        <ul>
-                            <li>Custom Dashboards</li>
-                            <li>Real-Time Reporting</li>
-                            <li>Data Visualization</li>
-                        </ul>
-                        <div class="tool-stack">
-                            <div title="Google Analytics"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Analytics" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                            <div title="Power BI"><img src="https://img.icons8.com/color/48/power-bi.png" alt="Power BI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                            <div title="Tableau"><img src="https://img.icons8.com/color/48/tableau-software.png" alt="Tableau" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="#" class="block">
-                    <div class="service-card fade-up transition duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:border-blue-500 border border-blue-500/10 backdrop-blur" style="animation-delay: 0.8s;">
-                        <div class="icon text-4xl transition hover:text-blue-500 hover:scale-110">💬</div>
-                        <h3>Communication</h3>
-                        <ul>
-                            <li>Slack Integration</li>
-                            <li>Email Automation</li>
-                            <li>Team Collaboration</li>
-                        </ul>
-                        <div class="tool-stack">
-                            <div title="Slack"><img src="https://img.icons8.com/color/48/slack-new.png" alt="Slack" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                            <div title="Mailchimp"><img src="https://img.icons8.com/color/48/mailchimp.png" alt="Mailchimp" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                            <div title="Microsoft Teams"><img src="https://img.icons8.com/color/48/microsoft-teams.png" alt="Microsoft Teams" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
-                        </div>
-                    </div>
-                </a>
-
+    <!-- Hero Section with Grid Background -->
+    <section class="grid-bg min-h-[50vh] flex items-center justify-center pt-24 relative">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 to-purple-800/10 z-0"></div>
+        <div class="container max-w-6xl mx-auto px-6 text-center relative z-10">
+            <div class="fade-up">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-white leading-tight">What We Do</h1>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Modular services. Built for speed, security, and scale.</p>
             </div>
         </div>
     </section>
 
-    <svg class="w-full h-12 text-[#0a0a0a]" viewBox="0 0 1440 100" fill="currentColor" preserveAspectRatio="none">
-        <path d="M0,0 C600,100 800,0 1440,100 L1440,0 L0,0 Z"></path>
-    </svg>
+    <!-- Filter Tabs -->
+    <section class="py-12">
+        <div class="container max-w-6xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center space-x-2 space-y-2 md:space-y-0 mb-12 fade-up">
+                <div class="filter-tab active" data-filter="all">All</div>
+                <div class="filter-tab" data-filter="automation">Automation</div>
+                <div class="filter-tab" data-filter="ai">AI</div>
+                <div class="filter-tab" data-filter="data">Data</div>
+                <div class="filter-tab" data-filter="operations">Operations</div>
+            </div>
 
-    <section class="text-center py-8">
-        <a href="#" class="glowing-button transition hover:tracking-wide hover:text-blue-400">Book a Free Consultation</a>
+            <!-- Services Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Business Workflow Automation -->
+                <div class="fade-up service-item" data-category="automation operations">
+                    <div class="service-card h-full">
+                        <div class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">⚙️</div>
+                        <h3>Business Workflow Automation</h3>
+                        <p class="description">Automations that eliminate repetitive ops.</p>
+                        <ul>
+                            <li>Auto-schedule social media posts</li>
+                            <li>Auto-update CRM</li>
+                            <li>Route leads to pipeline</li>
+                            <li>Extract data from documents</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="Zapier"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="ActivePieces"><img loading="lazy" src="https://avatars.githubusercontent.com/u/108571061" alt="ActivePieces" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Google Sheets"><img loading="lazy" src="https://img.icons8.com/color/48/google-sheets.png" alt="Google Sheets" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Notion"><img loading="lazy" src="https://img.icons8.com/color/48/notion.png" alt="Notion" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data & Analytics Automation -->
+                <div class="fade-up service-item" data-category="data automation">
+                    <div class="service-card h-full">
+                        <div class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">📊</div>
+                        <h3>Data & Analytics Automation</h3>
+                        <p class="description">Weekly reports, dashboards, and live metrics.</p>
+                        <ul>
+                            <li>Best customer reports</li>
+                            <li>Sync KPIs to Notion</li>
+                            <li>Sheets + scripts + GPT</li>
+                            <li>Automated performance alerts</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="Google Sheets"><img loading="lazy" src="https://img.icons8.com/color/48/google-sheets.png" alt="Google Sheets" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Notion"><img loading="lazy" src="https://img.icons8.com/color/48/notion.png" alt="Notion" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Power BI"><img loading="lazy" src="https://img.icons8.com/color/48/power-bi.png" alt="Power BI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="ChatGPT"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Smart Communication Systems -->
+                <div class="fade-up service-item" data-category="automation operations">
+                    <div class="service-card h-full">
+                        <div class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">📨</div>
+                        <h3>Smart Communication Systems</h3>
+                        <p class="description">Auto-replies, newsletters, reminders.</p>
+                        <ul>
+                            <li>Welcome emails</li>
+                            <li>Abandoned cart messages</li>
+                            <li>Smart reminders</li>
+                            <li>Personalized follow-ups</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="Gmail"><img loading="lazy" src="https://img.icons8.com/color/48/gmail--v1.png" alt="Gmail" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Mailchimp"><img loading="lazy" src="https://img.icons8.com/color/48/mailchimp.png" alt="Mailchimp" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Zapier"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="ChatGPT"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI-Powered Content Generation -->
+                <div class="fade-up service-item" data-category="ai">
+                    <div class="service-card h-full">
+                        <div class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">📣</div>
+                        <h3>AI-Powered Content Generation</h3>
+                        <p class="description">Captions, emails, blogs — AI handles writing.</p>
+                        <ul>
+                            <li>Social posts</li>
+                            <li>Product descriptions</li>
+                            <li>Newsletter copy</li>
+                            <li>SEO-optimized content</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="ChatGPT"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Notion AI"><img loading="lazy" src="https://img.icons8.com/color/48/notion.png" alt="Notion AI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Google Trends"><img loading="lazy" src="https://img.icons8.com/color/48/google-logo.png" alt="Google Trends" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Claude AI"><img loading="lazy" src="https://www.anthropic.com/images/favicon.svg" alt="Claude AI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom API Integrations -->
+                <div class="fade-up service-item" data-category="data operations">
+                    <div class="service-card h-full">
+                        <div class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">🔌</div>
+                        <h3>Custom API Integrations</h3>
+                        <p class="description">Connect different platforms seamlessly.</p>
+                        <ul>
+                            <li>CRM + payment system sync</li>
+                            <li>Custom webhook handling</li>
+                            <li>Multi-platform data flow</li>
+                            <li>Legacy system integration</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="Make.com"><img loading="lazy" src="https://assets.website-files.com/64090a5d0720ef778e3f9167/640b451d156d614a078aa2d9_make-logo.svg" alt="Make.com" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Zapier"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="REST API"><img loading="lazy" src="https://img.icons8.com/color/48/api-settings.png" alt="REST API" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Postman"><img loading="lazy" src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced AI Workflow Automation -->
+                <div class="fade-up service-item" data-category="ai automation">
+                    <div class="service-card h-full">
+                        <div class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">🤖</div>
+                        <h3>Advanced AI Workflow Automation</h3>
+                        <p class="description">Leverage AI to automate complex decisions.</p>
+                        <ul>
+                            <li>Intelligent document processing</li>
+                            <li>AI-powered customer routing</li>
+                            <li>Smart data classification</li>
+                            <li>Predictive task scheduling</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="OpenAI"><img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="OpenAI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Google AI"><img loading="lazy" src="https://img.icons8.com/color/48/google-cloud.png" alt="Google AI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Zapier"><img loading="lazy" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Python"><img loading="lazy" src="https://img.icons8.com/color/48/python--v1.png" alt="Python" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="text-center py-12">
-        <h2 class="text-2xl font-semibold mb-4 fade-up">Have a custom workflow or niche idea?</h2>
-        <p class="text-gray-400 mb-6 fade-up">Let's talk about building it out together.</p>
-        <a href="#" class="glowing-button hover:scale-105 transition hover:tracking-wide hover:text-blue-400">Start a Custom Request</a>
+    <!-- Industries We Help Section -->
+    <section class="py-16 bg-gray-900">
+        <div class="container max-w-6xl mx-auto px-6">
+            <h2 class="text-4xl font-bold mb-8 text-center fade-up">Industries We Help</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Ecommerce Stores -->
+                <div class="fade-up" style="animation-delay: 0.1s;">
+                    <div class="industry-card">
+                        <div class="text-3xl mb-4">🛍️</div>
+                        <h3 class="text-xl font-bold mb-2">Ecommerce Stores</h3>
+                        <ul class="text-gray-300 text-sm space-y-2">
+                            <li>Abandoned cart flows</li>
+                            <li>Social drops</li>
+                            <li>Thank-you email chains</li>
+                            <li>Inventory sync automation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Marketing Agencies -->
+                <div class="fade-up" style="animation-delay: 0.2s;">
+                    <div class="industry-card">
+                        <div class="text-3xl mb-4">📈</div>
+                        <h3 class="text-xl font-bold mb-2">Marketing Agencies</h3>
+                        <ul class="text-gray-300 text-sm space-y-2">
+                            <li>Performance dashboards</li>
+                            <li>Client onboarding automations</li>
+                            <li>LinkedIn/IG schedulers</li>
+                            <li>Reporting automation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Restaurants / Local -->
+                <div class="fade-up" style="animation-delay: 0.3s;">
+                    <div class="industry-card">
+                        <div class="text-3xl mb-4">🍽️</div>
+                        <h3 class="text-xl font-bold mb-2">Restaurants / Local</h3>
+                        <ul class="text-gray-300 text-sm space-y-2">
+                            <li>Weekly promos to customers</li>
+                            <li>Review summaries</li>
+                            <li>Event reminder flows</li>
+                            <li>Inventory & ordering systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Coaches & Consultants -->
+                <div class="fade-up" style="animation-delay: 0.4s;">
+                    <div class="industry-card">
+                        <div class="text-3xl mb-4">🧠</div>
+                        <h3 class="text-xl font-bold mb-2">Coaches & Consultants</h3>
+                        <ul class="text-gray-300 text-sm space-y-2">
+                            <li>Call booking automations</li>
+                            <li>Progress reports</li>
+                            <li>Blog/newsletter drafts via AI</li>
+                            <li>Client onboarding sequences</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <!-- CTA Banner Section -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-purple-800/20 z-0"></div>
+        <div class="grid-bg absolute inset-0 opacity-30 z-0"></div>
+        <div class="container max-w-6xl mx-auto px-6 text-center relative z-10">
+            <div class="bg-black/30 backdrop-blur-sm p-12 rounded-2xl border border-blue-500/10 shadow-lg fade-up">
+                <h2 class="text-3xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">Have something specific in mind?</h2>
+                <div class="text-gray-400 text-sm mb-4 fade-up">
+                    <em>Over 45,000 support hours saved | Avg. ROI in 3 months | 5–10 hrs/week saved</em>
+                </div>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">Every business has unique automation needs. Let's discuss your specific requirements and build a custom solution.</p>
+                <a href="contact.html#calendly" class="glowing-button transition hover:tracking-wide">Book a Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-sm text-gray-400 text-center py-6 border-t border-gray-800">
+        © 2025 ClosR Automation — No manual in the loop. <br />
+        <a href="mailto:hello@closr.ai" class="text-blue-400 hover:underline">hello@closr.ai</a>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg z-40 hover:bg-blue-700 hidden">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
 
     <script>
-        // Function to check if an element is in the viewport
-        function isElementInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return (
-                rect.top >= 0 &&
-                rect.left >= 0 &&
-                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-            );
-        }
-
-        // Function to handle scroll events
-        function handleScroll() {
-            const fadeUpElements = document.querySelectorAll('.fade-up');
-
-            fadeUpElements.forEach(el => {
-                if (isElementInViewport(el)) {
-                    el.classList.add('active');
-                }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if(mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    // Add show class after removing hidden to trigger animation
+                    if(!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            mobileMenu.classList.add('show');
+                        }, 10); // Small delay to ensure transition happens
+                    } else {
+                        mobileMenu.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Setup fade-up animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.fade-up').forEach(el => {
+                fadeObserver.observe(el);
             });
-        }
-
-        // Add scroll event listener
-        window.addEventListener('scroll', handleScroll);
-
-        // Initial check in case the element is already in the viewport on page load
-        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Filter functionality
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const serviceItems = document.querySelectorAll('.service-item');
+            
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    const filter = tab.getAttribute('data-filter');
+                    
+                    // Filter service items
+                    serviceItems.forEach(item => {
+                        // First fade out all items
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        
+                        setTimeout(() => {
+                            if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                                item.style.display = 'block';
+                                setTimeout(() => {
+                                    item.style.opacity = '1';
+                                    item.style.transform = 'translateY(0)';
+                                }, 50);
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }, 300);
+                    });
+                });
+            });
+            
+            // Back to top button
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            function handleScroll() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                    setTimeout(() => {
+                        if (!backToTopBtn.classList.contains('show')) {
+                            backToTopBtn.classList.add('hidden');
+                        }
+                    }, 300);
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Initial check for scroll position
             handleScroll();
         });
-    </script>
-
-    <script>
-      const cursor = document.getElementById('custom-cursor');
-      document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-      });
-
-      const hoverables = document.querySelectorAll('a, button, .glowing-button, .service-card');
-      hoverables.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
-      });
+        
+        // Initialize cursor only when user moves mouse
+        window.addEventListener('mousemove', initCursor, { once: true });
+        
+        // Function to init cursor
+        function initCursor(e) {
+            const cursor = document.getElementById('custom-cursor');
+            cursor.style.opacity = '1';
+            
+            function updateCursorPosition(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+            
+            document.addEventListener('mousemove', updateCursorPosition, { passive: true });
+            updateCursorPosition(e);
+            
+            const hoverables = document.querySelectorAll('a, button, .glowing-button, .service-card, .industry-card, .filter-tab');
+            hoverables.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
+            });
+        }
     </script>
 </body>
 </html>

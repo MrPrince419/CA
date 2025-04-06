@@ -34,7 +34,7 @@
             background: linear-gradient(to right, #4CAF50, #2196F3);
             overflow: hidden;
             z-index: 1;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.3s;
         }
 
         .glowing-button::before {
@@ -53,6 +53,7 @@
 
         .glowing-button:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 15px #4CAF50, 0 0 25px #2196F3;
         }
 
         .glowing-button:hover::before {
@@ -363,18 +364,104 @@
             box-shadow: 0 0 20px rgba(80, 192, 203, 0.5);
             transform: translateY(-10px);
         }
+
+        /* Nav Link Animation */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Logo Animation */
+        .logo-bubble {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logo-bubble:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Mobile Menu Animation */
+        #mobileMenu {
+            transition: all 0.3s ease;
+            transform: translateY(-10px);
+            opacity: 0;
+        }
+
+        #mobileMenu.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Back to Top Button Animation */
+        #backToTop {
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body class="bg-black text-white">
     <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"></div>
     <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
     <div class="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-br from-blue-900 to-purple-800 opacity-20 z-0" style="transform: translateY(-30%);"></div>
-    <section id="hero" class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center">
+    
+    <!-- New Sticky Navigation Bar -->
+    <nav class="fixed top-0 w-full z-50 backdrop-blur bg-black/70 shadow">
+        <div class="container max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-white hover:text-blue-400 transition duration-300">
+                <a href="#hero">ClosR</a>
+            </div>
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#hero" class="nav-link text-white hover:text-blue-400 transition duration-300">Home</a>
+                <a href="#features" class="nav-link text-white hover:text-blue-400 transition duration-300">Services</a>
+                <a href="#stats" class="nav-link text-white hover:text-blue-400 transition duration-300">Results</a>
+                <a href="contact.html#calendly" class="nav-link text-white hover:text-blue-400 transition duration-300">Contact</a>
+            </div>
+            <div class="block md:hidden">
+                <button id="mobileMenuBtn" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-black/90 backdrop-blur w-full">
+            <div class="container px-6 py-4 flex flex-col space-y-4">
+                <a href="#hero" class="text-white hover:text-blue-400 transition duration-300">Home</a>
+                <a href="#features" class="text-white hover:text-blue-400 transition duration-300">Services</a>
+                <a href="#stats" class="text-white hover:text-blue-400 transition duration-300">Results</a>
+                <a href="contact.html#calendly" class="text-white hover:text-blue-400 transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center pt-32">
         <div class="fade-up lazy">
             <h1 id="headline" class="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg hover:text-blue-400 transition duration-300"></h1>
             <p id="subheadline" class="text-lg md:text-xl lg:text-2xl mb-8">Automation, AI, and smart workflows – built for impact.</p>
         </div>
-        <a id="ctaButton" href="#" class="glowing-button mt-6 hover:scale-105">Book a Free Consultation</a>
+        <a id="ctaButton" href="contact.html#calendly" class="glowing-button animate-pulse mt-6 hover:scale-105 drop-shadow-lg">Book a Free Consultation</a>
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bounce">
             <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
@@ -423,42 +510,73 @@
         </div>
     </section>
 
-    <section id="marquee" class="bg-gray-800 py-24">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold">Built With the Tools You Already Trust</h2>
-            <p class="text-lg text-gray-400">ClosR workflows run on the world's most respected platforms</p>
-        </div>
-        <div class="marquee-container">
-            <div class="marquee">
-                <div class="marquee-card">
-                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" title="Zapier" class="w-10 h-10 hover:scale-110 transition duration-300" loading="lazy">
+    <!-- Replace marquee section with scrollable logos -->
+    <section id="tools" class="bg-gray-800 py-24">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-12 fade-up">
+                <h2 class="text-4xl font-bold">Built With the Tools You Already Trust</h2>
+                <p class="text-lg text-gray-400">ClosR workflows run on the world's most respected platforms</p>
+            </div>
+            <div class="overflow-x-auto flex gap-6 px-4 py-6 whitespace-nowrap items-center fade-up">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://assets.website-files.com/64090a5d0720ef778e3f9167/640b451d156d614a078aa2d9_make-logo.svg" alt="Make" title="Make" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/slack-new.png" alt="Slack" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://img.icons8.com/color/48/slack-new.png" alt="Slack" title="Slack" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/airtable.png" alt="Airtable" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Workspace" title="Google Workspace" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/mailchimp.png" alt="Mailchimp" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://img.icons8.com/color/48/hubspot.png" alt="HubSpot" title="HubSpot" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://cdn.worldvectorlogo.com/logos/calendly.svg" alt="Calendly" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://img.icons8.com/color/48/mailchimp.png" alt="Mailchimp" title="Mailchimp" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Workspace" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://www.vectorlogo.zone/logos/webflow/webflow-icon.svg" alt="Webflow" title="Webflow" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/microsoft.png" alt="Microsoft 365" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://img.icons8.com/color/48/airtable.png" alt="Airtable" title="Airtable" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/power-bi.png" alt="Power BI" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://cdn.worldvectorlogo.com/logos/calendly.svg" alt="Calendly" title="Calendly" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/tableau-software.png" alt="Tableau" class="w-8 h-8 object-contain"/>
                 </div>
-                <div class="marquee-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" title="ChatGPT" class="w-10 h-10 hover:scale-110 transition duration-300">
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/trello.png" alt="Trello" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/notion.png" alt="Notion" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/github--v1.png" alt="GitHub" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/asana.png" alt="Asana" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/jira.png" alt="Jira" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/figma--v1.png" alt="Figma" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/discord--v1.png" alt="Discord" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/hubspot.png" alt="HubSpot" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/salesforce.png" alt="Salesforce" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-8 h-8 object-contain"/>
+                </div>
+                <div class="logo-bubble rounded-full w-12 h-12 flex items-center justify-center bg-white/5 backdrop-blur p-2">
+                    <img src="https://img.icons8.com/color/48/zoom.png" alt="Zoom" class="w-8 h-8 object-contain"/>
                 </div>
             </div>
         </div>
@@ -553,9 +671,66 @@
         </div>
     </section>
 
+    <!-- Add minimal footer -->
+    <footer class="text-sm text-gray-400 text-center py-6 border-t border-gray-800">
+        © 2025 ClosR Automation — No manual in the loop. <br />
+        <a href="mailto:hello@closr.ai" class="text-blue-400 hover:underline">hello@closr.ai</a>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 p-3 bg-blue-600 text-white rounded-full shadow-lg z-40 hover:bg-blue-700">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
     <script>
         // Initialize components only when needed
         document.addEventListener('DOMContentLoaded', function() {
+            // Setup mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            if(mobileMenuBtn && mobileMenu) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                    // Add show class after removing hidden to trigger animation
+                    if(!mobileMenu.classList.contains('hidden')) {
+                        setTimeout(() => {
+                            mobileMenu.classList.add('show');
+                        }, 10); // Small delay to ensure transition happens
+                    } else {
+                        mobileMenu.classList.remove('show');
+                    }
+                });
+            }
+            
+            // Setup back to top button
+            const backToTopBtn = document.getElementById('backToTop');
+            
+            function handleScroll() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                    setTimeout(() => {
+                        if (!backToTopBtn.classList.contains('show')) {
+                            backToTopBtn.classList.add('hidden');
+                        }
+                    }, 300); // Match the duration of the transition
+                }
+            }
+            
+            window.addEventListener('scroll', handleScroll);
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Initial check for scroll position
+            handleScroll();
+            
             // Setup scroll observation for lazy-loaded elements
             initLazyLoad();
             
@@ -582,7 +757,7 @@
             document.addEventListener('mousemove', updateCursorPosition, { passive: true });
             updateCursorPosition(e);
             
-            const hoverables = document.querySelectorAll('a, button, .glowing-button');
+            const hoverables = document.querySelectorAll('a, button, .glowing-button, .logo-bubble');
             hoverables.forEach(el => {
                 el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
                 el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
@@ -591,7 +766,7 @@
         
         // Initialize lazy-loaded elements
         function initLazyLoad() {
-            const lazyElements = document.querySelectorAll('.lazy');
+            const lazyElements = document.querySelectorAll('.lazy, .fade-up');
             const options = {
                 root: null,
                 rootMargin: '0px',
@@ -602,6 +777,11 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const element = entry.target;
+                        
+                        // Add active class to fade-up elements
+                        if(element.classList.contains('fade-up')) {
+                            element.classList.add('active');
+                        }
                         
                         // For hero section - animate text
                         if (element.closest('#hero')) {
@@ -615,19 +795,6 @@
             }, options);
             
             lazyElements.forEach(el => observer.observe(el));
-            
-            // Handle fade-up elements with IntersectionObserver
-            const fadeUpElements = document.querySelectorAll('.fade-up');
-            const fadeUpObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, options);
-            
-            fadeUpElements.forEach(el => fadeUpObserver.observe(el));
         }
         
         // Animate hero text when visible
