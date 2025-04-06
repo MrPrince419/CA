@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ClosR Automation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="ClosR Automation – Business automation & AI services to save time, reduce cost, and scale smartly." />
+    <meta name="author" content="ClosR Automation" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="ClosR Automation" />
+    <meta property="og:description" content="Smart, scalable automation for modern businesses." />
+    <meta property="og:type" content="website" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Glowing Button Styles */
+        .glowing-button {
+            position: relative;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            background: linear-gradient(to right, #4CAF50, #2196F3);
+            overflow: hidden;
+            z-index: 1;
+            transition: transform 0.2s;
+        }
+
+        .glowing-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            padding-bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 100%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, padding-bottom 0.5s;
+            z-index: -1;
+        }
+
+        .glowing-button:hover {
+            transform: scale(1.1);
+        }
+
+        .glowing-button:hover::before {
+            width: 300%;
+            padding-bottom: 300%;
+        }
+
+        /* Bounce Animation */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+
+        /* Fade-in Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        /* Animated Background Gradient */
+        @keyframes animatedGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-gradient {
+            background: linear-gradient(270deg, #00bcd4, #9c27b0, #e91e63);
+            background-size: 600% 600%;
+            animation: animatedGradient 15s ease infinite;
+        }
+
+        /* Glassmorphism Card Styles */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.2;
+            }
+        }
+
+        .feature-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .feature-card p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        /* Fade-in Animation for Cards */
+        .fade-in-card {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInCard 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeInCard {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Marquee Styles */
+        .marquee-container {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .marquee {
+            display: flex;
+            width: max-content;
+            animation: marqueeAnimation 20s linear infinite;
+            padding-left: 100%; /* Start offscreen */
+        }
+
+        .marquee-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            margin: 0 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+            color: #fff;
+        }
+
+        .marquee-card:hover {
+            transform: scale(1.1);
+        }
+
+        .marquee-card img {
+            max-width: 48px;
+            height: auto;
+        }
+
+        @keyframes marqueeAnimation {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Stats Card Styles */
+        .stats-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stats-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-subtitle {
+            font-size: 1.2rem;
+            color: #ddd;
+            margin-bottom: 0.5rem;
+        }
+
+        .stats-description {
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        /* Fade-up Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Pricing Card Styles */
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .pricing-card .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-card li {
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card li::before {
+            content: "✅ ";
+            color: #4CAF50;
+            margin-right: 0.5rem;
+        }
+
+        .pricing-card .cta-button {
+            background: linear-gradient(to right, #4CAF50, #2196F3);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 8px;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .pricing-card .cta-button:hover {
+            transform: scale(1.1);
+        }
+
+        .pricing-card.featured {
+            box-shadow: 0 0 20px rgba(80, 192, 203, 0.5);
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference opacity-0"></div>
+    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
+    <div class="absolute top-0 left-0 w-full h-[300px] bg-gradient-to-br from-blue-900 to-purple-800 opacity-20 z-0" style="transform: translateY(-30%);"></div>
+    <section id="hero" class="relative z-10 min-h-screen flex flex-col justify-center items-center text-center">
+        <div class="fade-up lazy">
+            <h1 id="headline" class="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg hover:text-blue-400 transition duration-300"></h1>
+            <p id="subheadline" class="text-lg md:text-xl lg:text-2xl mb-8">Automation, AI, and smart workflows – built for impact.</p>
+        </div>
+        <a id="ctaButton" href="#" class="glowing-button mt-6 hover:scale-105">Book a Free Consultation</a>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 bounce">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <svg class="w-full h-12 text-[#0a0a0a]" viewBox="0 0 1440 100" fill="currentColor" preserveAspectRatio="none">
+        <path d="M0,0 C600,100 800,0 1440,100 L1440,0 L0,0 Z"></path>
+    </svg>
+
+    <section id="features" class="bg-gray-900 py-32">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <div id="feature1" class="feature-card transition duration-300 transform hover:scale-105 hover:border-blue-400 border border-blue-500/10 rounded-xl backdrop-blur" style="animation-delay: 0.1s;">
+                    <i class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">⚙️</i>
+                    <h3>Automate <span class="relative group text-blue-400">
+                        automation
+                        <span class="absolute left-0 -top-6 text-xs bg-black px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 text-green-400 font-mono">
+                          // it's all scripted
+                        </span>
+                      </span></h3>
+                    <p>No more manual tasks, ever.</p>
+                </div>
+
+                <div id="feature2" class="feature-card transition duration-300 transform hover:scale-105 hover:border-blue-400 border border-blue-500/10 rounded-xl backdrop-blur" style="animation-delay: 0.3s;">
+                    <i class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">📊</i>
+                    <h3>Smart Reports</h3>
+                    <p>Real-time insights delivered to you.</p>
+                </div>
+
+                <div id="feature3" class="feature-card transition duration-300 transform hover:scale-105 hover:border-blue-400 border border-blue-500/10 rounded-xl backdrop-blur" style="animation-delay: 0.5s;">
+                    <i class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">📞</i>
+                    <h3>24H Response</h3>
+                    <p>Always available support.</p>
+                </div>
+
+                <div id="feature4" class="feature-card transition duration-300 transform hover:scale-105 hover:border-blue-400 border border-blue-500/10 rounded-xl backdrop-blur" style="animation-delay: 0.7s;">
+                    <i class="icon text-4xl mb-4 transition duration-300 hover:scale-110 hover:text-blue-500">🔒</i>
+                    <h3>Private & Secure</h3>
+                    <p>No bloated client data stored.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="marquee" class="bg-gray-800 py-24">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold">Built With the Tools You Already Trust</h2>
+            <p class="text-lg text-gray-400">ClosR workflows run on the world's most respected platforms</p>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee">
+                <div class="marquee-card">
+                    <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" title="Zapier" class="w-10 h-10 hover:scale-110 transition duration-300" loading="lazy">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://assets.website-files.com/64090a5d0720ef778e3f9167/640b451d156d614a078aa2d9_make-logo.svg" alt="Make" title="Make" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://img.icons8.com/color/48/slack-new.png" alt="Slack" title="Slack" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Workspace" title="Google Workspace" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://img.icons8.com/color/48/hubspot.png" alt="HubSpot" title="HubSpot" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://img.icons8.com/color/48/mailchimp.png" alt="Mailchimp" title="Mailchimp" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://www.vectorlogo.zone/logos/webflow/webflow-icon.svg" alt="Webflow" title="Webflow" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://img.icons8.com/color/48/airtable.png" alt="Airtable" title="Airtable" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://cdn.worldvectorlogo.com/logos/calendly.svg" alt="Calendly" title="Calendly" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+                <div class="marquee-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" title="ChatGPT" class="w-10 h-10 hover:scale-110 transition duration-300">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="bg-black py-32">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="text-4xl font-bold mb-4">The Impact of Automation</h2>
+            <p class="text-lg text-gray-400 mb-16">Real numbers. Measurable results.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="stats-card fade-up" style="animation-delay: 0.1s;">
+                    <div class="stats-number text-4xl font-bold text-green-400 drop-shadow-lg" data-start="5" data-end="10" data-suffix=" hours">5</div>
+                    <div class="stats-subtitle">Hours Saved Per Week</div>
+                    <div class="stats-description">5–10 hours per employee</div>
+                </div>
+
+                <div class="stats-card fade-up" style="animation-delay: 0.3s;">
+                    <div class="stats-number text-4xl font-bold text-green-400 drop-shadow-lg" data-start="0" data-end="30" data-suffix="%">0</div>
+                    <div class="stats-subtitle">Support Cost Reduction</div>
+                    <div class="stats-description">30% reduction in support costs</div>
+                </div>
+
+                <div class="stats-card fade-up" style="animation-delay: 0.5s;">
+                    <div class="stats-number text-4xl font-bold text-green-400 drop-shadow-lg" data-start="10" data-end="30" data-suffix="%">10</div>
+                    <div class="stats-subtitle">Error Recovery Boost</div>
+                    <div class="stats-description">10–30% improvement in error recovery</div>
+                </div>
+
+                <div class="stats-card fade-up" style="animation-delay: 0.7s;">
+                    <div class="stats-number text-4xl font-bold text-green-400 drop-shadow-lg" data-start="300" data-end="500" data-suffix="%">300</div>
+                    <div class="stats-subtitle">Long-Term ROI</div>
+                    <div class="stats-description">300–500% long-term return on investment</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="bg-gray-900 py-32">
+        <div class="container mx-auto max-w-6xl text-center">
+            <h2 class="text-4xl font-bold mb-4">Choose Your Automation Plan</h2>
+            <p class="text-lg text-gray-400 mb-16">Simple pricing. Scalable results.</p>
+
+            <!-- Add toggle switch for Monthly/Yearly pricing -->
+            <div class="mb-8 flex justify-center items-center gap-4 text-gray-400">
+                <span>Monthly</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" id="billingToggle" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:bg-blue-600 transition duration-300"></div>
+                    <div class="absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform duration-300 peer-checked:translate-x-full"></div>
+                </label>
+                <span>Yearly</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="pricing-card">
+                    <h3 class="title">Starter</h3>
+                    <div class="price" data-monthly="$500/mo" data-yearly="$5,000/yr">$500/mo</div>
+                    <ul>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">1 Workflow</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Email Support</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Monthly Check-In</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">1 Report + AI Content</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="pricing-card border-2 border-blue-500 shadow-lg scale-105 z-10">
+                    <h3 class="title">Growth</h3>
+                    <div class="price" data-monthly="$1,000/mo" data-yearly="$10,000/yr">$1,000/mo</div>
+                    <ul>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">3 Workflows</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Priority Support</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Biweekly Strategy Calls</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">CRM Setup + Smart Reports</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3 class="title">Enterprise</h3>
+                    <div class="price" data-monthly="Custom" data-yearly="Custom">Custom</div>
+                    <ul>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Unlimited Workflows</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">24/7 Support</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Weekly Strategy</li>
+                        <li class="flex items-center gap-2 hover:text-blue-400 transition">Full AI Stack</li>
+                    </ul>
+                    <a href="#" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize components only when needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup scroll observation for lazy-loaded elements
+            initLazyLoad();
+            
+            // Setup stats section with IntersectionObserver
+            initStatsSection();
+            
+            // Setup pricing toggle only when needed
+            initPricingToggleWhenVisible();
+        });
+        
+        // Initialize cursor only when user moves mouse
+        window.addEventListener('mousemove', initCursor, { once: true });
+        
+        // Function to init cursor
+        function initCursor(e) {
+            const cursor = document.getElementById('custom-cursor');
+            cursor.style.opacity = '1';
+            
+            function updateCursorPosition(e) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+            
+            document.addEventListener('mousemove', updateCursorPosition, { passive: true });
+            updateCursorPosition(e);
+            
+            const hoverables = document.querySelectorAll('a, button, .glowing-button');
+            hoverables.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
+            });
+        }
+        
+        // Initialize lazy-loaded elements
+        function initLazyLoad() {
+            const lazyElements = document.querySelectorAll('.lazy');
+            const options = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        
+                        // For hero section - animate text
+                        if (element.closest('#hero')) {
+                            element.classList.add('active');
+                            animateHeroText();
+                        }
+                        
+                        observer.unobserve(element);
+                    }
+                });
+            }, options);
+            
+            lazyElements.forEach(el => observer.observe(el));
+            
+            // Handle fade-up elements with IntersectionObserver
+            const fadeUpElements = document.querySelectorAll('.fade-up');
+            const fadeUpObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
+            
+            fadeUpElements.forEach(el => fadeUpObserver.observe(el));
+        }
+        
+        // Animate hero text when visible
+        function animateHeroText() {
+            const headline = document.getElementById('headline');
+            const text = "We Automate Everything";
+            let index = 0;
+            
+            function typeWriter() {
+                if (index < text.length) {
+                    headline.innerHTML += text.charAt(index);
+                    index++;
+                    requestAnimationFrame(() => setTimeout(typeWriter, 60));
+                }
+            }
+            
+            typeWriter();
+        }
+        
+        // Initialize stats section with intersection observer
+        function initStatsSection() {
+            const statsSection = document.getElementById('stats');
+            const statsElements = document.querySelectorAll('.stats-number');
+            let statsAnimated = false;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !statsAnimated) {
+                        animateStats();
+                        statsAnimated = true;
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            observer.observe(statsSection);
+            
+            function animateStats() {
+                statsElements.forEach(statsNumber => {
+                    const start = parseInt(statsNumber.dataset.start);
+                    const end = parseInt(statsNumber.dataset.end);
+                    const suffix = statsNumber.dataset.suffix || "";
+                    const duration = 2000;
+                    const range = end - start;
+                    const startTime = performance.now();
+                    
+                    function updateCounter(timestamp) {
+                        const elapsed = timestamp - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        const currentValue = Math.floor(start + progress * range);
+                        
+                        statsNumber.textContent = currentValue + suffix;
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            statsNumber.textContent = end + suffix;
+                        }
+                    }
+                    
+                    requestAnimationFrame(updateCounter);
+                });
+            }
+        }
+        
+        // Initialize pricing toggle only when section is visible
+        function initPricingToggleWhenVisible() {
+            const pricingSection = document.getElementById('pricing');
+            const toggle = document.getElementById('billingToggle');
+            const prices = document.querySelectorAll('.price');
+            let toggleInitialized = false;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !toggleInitialized) {
+                        // Initialize toggle logic
+                        toggle.addEventListener('change', () => {
+                            prices.forEach(price => {
+                                if (toggle.checked) {
+                                    price.textContent = price.dataset.yearly;
+                                } else {
+                                    price.textContent = price.dataset.monthly;
+                                }
+                            });
+                        });
+                        
+                        toggleInitialized = true;
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            observer.observe(pricingSection);
+        }
+    </script>
+</body>
+</html>

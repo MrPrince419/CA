@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Core Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="ClosR Automation – Business automation & AI services to save time, reduce cost, and scale smartly." />
+    <meta name="author" content="ClosR Automation" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="ClosR Automation" />
+    <meta property="og:description" content="Smart, scalable automation for modern businesses." />
+    <meta property="og:type" content="website" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a;
+            color: white;
+        }
+
+        /* Glassmorphism Card Styles */
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card li {
+            font-size: 1rem;
+            color: #ddd;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card .tool-stack {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .service-card .tool-stack img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .tool-stack img {
+            transform: scale(1.2);
+        }
+
+        /* Glowing Button Styles */
+        .glowing-button {
+            position: relative;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            background: linear-gradient(to right, #4CAF50, #2196F3);
+            overflow: hidden;
+            z-index: 1;
+            transition: transform 0.2s;
+        }
+
+        .glowing-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            padding-bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 100%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, padding-bottom 0.5s;
+            z-index: -1;
+        }
+
+        .glowing-button:hover {
+            transform: scale(1.1);
+        }
+
+        .glowing-button:hover::before {
+            width: 300%;
+            padding-bottom: 300%;
+        }
+
+        /* Fade-up Animation */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-up.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div id="custom-cursor" class="fixed w-4 h-4 bg-blue-400 rounded-full pointer-events-none z-50 transition-transform duration-150 transform -translate-x-1/2 -translate-y-1/2 mix-blend-difference"></div>
+    <div class="fixed inset-0 z-0 opacity-[0.02] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/black-paper.png')]"></div>
+    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 bg-black/50 backdrop-blur px-4 py-2 rounded-full shadow text-sm text-white">
+        <a href="index.html" class="mx-2 hover:underline">Home</a>
+        <a href="services.html" class="mx-2 text-blue-400 font-semibold">Services</a>
+        <a href="results.html" class="mx-2 hover:underline">Results</a>
+        <a href="contact.html" class="mx-2 hover:underline">Contact</a>
+    </nav>
+
+    <header class="text-center py-16 fade-up">
+        <h1 class="text-4xl font-bold mb-4">Our Core Services</h1>
+        <p class="text-lg text-gray-400">Everything you need to streamline your business</p>
+    </header>
+
+    <section id="services" class="py-16">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                <a href="#" class="block">
+                    <div class="service-card fade-up transition duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:border-blue-500 border border-blue-500/10 backdrop-blur" style="animation-delay: 0.2s;">
+                        <div class="icon text-4xl transition hover:text-blue-500 hover:scale-110">⚙️</div>
+                        <h3>Workflow <span class="relative group text-blue-400">
+                            Automation
+                            <span class="absolute left-0 -top-6 text-xs bg-black px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 text-green-400 font-mono">
+                              // machines doing the work
+                            </span>
+                          </span></h3>
+                        <ul>
+                            <li>Auto-posting</li>
+                            <li>Auto-CRM updates</li>
+                            <li>Automated Reporting</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="Zapier"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/zapier.svg" alt="Zapier" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Make"><img src="https://img.icons8.com/color/48/make.png" alt="Make" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Airtable"><img src="https://img.icons8.com/color/48/airtable.png" alt="Airtable" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="block">
+                    <div class="service-card fade-up transition duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:border-blue-500 border border-blue-500/10 backdrop-blur" style="animation-delay: 0.4s;">
+                        <div class="icon text-4xl transition hover:text-blue-500 hover:scale-110">🤖</div>
+                        <h3>AI Solutions</h3>
+                        <ul>
+                            <li>AI Content Creation</li>
+                            <li>Predictive Analytics</li>
+                            <li>Smart Chatbots</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="ChatGPT"><img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Google AI"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google AI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Microsoft AI"><img src="https://img.icons8.com/fluency/48/microsoft.png" alt="Microsoft AI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="block">
+                    <div class="service-card fade-up transition duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:border-blue-500 border border-blue-500/10 backdrop-blur" style="animation-delay: 0.6s;">
+                        <div class="icon text-4xl transition hover:text-blue-500 hover:scale-110">📊</div>
+                        <h3>Data Analytics</h3>
+                        <ul>
+                            <li>Custom Dashboards</li>
+                            <li>Real-Time Reporting</li>
+                            <li>Data Visualization</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="Google Analytics"><img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Analytics" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Power BI"><img src="https://img.icons8.com/color/48/power-bi.png" alt="Power BI" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Tableau"><img src="https://img.icons8.com/color/48/tableau-software.png" alt="Tableau" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="block">
+                    <div class="service-card fade-up transition duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:border-blue-500 border border-blue-500/10 backdrop-blur" style="animation-delay: 0.8s;">
+                        <div class="icon text-4xl transition hover:text-blue-500 hover:scale-110">💬</div>
+                        <h3>Communication</h3>
+                        <ul>
+                            <li>Slack Integration</li>
+                            <li>Email Automation</li>
+                            <li>Team Collaboration</li>
+                        </ul>
+                        <div class="tool-stack">
+                            <div title="Slack"><img src="https://img.icons8.com/color/48/slack-new.png" alt="Slack" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Mailchimp"><img src="https://img.icons8.com/color/48/mailchimp.png" alt="Mailchimp" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                            <div title="Microsoft Teams"><img src="https://img.icons8.com/color/48/microsoft-teams.png" alt="Microsoft Teams" class="w-8 h-8 transition hover:scale-110 hover:brightness-125"></div>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <svg class="w-full h-12 text-[#0a0a0a]" viewBox="0 0 1440 100" fill="currentColor" preserveAspectRatio="none">
+        <path d="M0,0 C600,100 800,0 1440,100 L1440,0 L0,0 Z"></path>
+    </svg>
+
+    <section class="text-center py-8">
+        <a href="#" class="glowing-button transition hover:tracking-wide hover:text-blue-400">Book a Free Consultation</a>
+    </section>
+
+    <section class="text-center py-12">
+        <h2 class="text-2xl font-semibold mb-4 fade-up">Have a custom workflow or niche idea?</h2>
+        <p class="text-gray-400 mb-6 fade-up">Let's talk about building it out together.</p>
+        <a href="#" class="glowing-button hover:scale-105 transition hover:tracking-wide hover:text-blue-400">Start a Custom Request</a>
+    </section>
+
+    <script>
+        // Function to check if an element is in the viewport
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Function to handle scroll events
+        function handleScroll() {
+            const fadeUpElements = document.querySelectorAll('.fade-up');
+
+            fadeUpElements.forEach(el => {
+                if (isElementInViewport(el)) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Initial check in case the element is already in the viewport on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            handleScroll();
+        });
+    </script>
+
+    <script>
+      const cursor = document.getElementById('custom-cursor');
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+      });
+
+      const hoverables = document.querySelectorAll('a, button, .glowing-button, .service-card');
+      hoverables.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('scale-150'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('scale-150'));
+      });
+    </script>
+</body>
+</html>
