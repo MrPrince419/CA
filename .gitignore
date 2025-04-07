@@ -1,19 +1,36 @@
-# Editor and environment clutter
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
 .vscode/
 .idea/
-.DS_Store
-.env
-*.log
+*.swp
+*.swo
+
+# Node.js dependencies
 node_modules/
-tmp/
+npm-debug.log
+yarn-error.log
+
+# Build files
 dist/
+build/
+
+# Local env files
+.env.local
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+*.log
 
 # Local development files
-*.local
 .cache/
 .history/
 
 # Backup files
 *.bak
-*.swp
 *~

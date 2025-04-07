@@ -1,0 +1,24 @@
+[build]
+  publish = "./"
+  command = ""
+
+# Ensure all routes are handled correctly by the SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Enable pretty URLs without .html extension
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+[plugins.inputs]
+  buildDir = "./"
+
+# Set custom headers for better security and caching
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    Cache-Control = "public, max-age=86400"
